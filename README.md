@@ -5,42 +5,84 @@
   </a>
 </p>
 <h1 align="center">
-  Gatsby's default starter
+  Relay Resource
 </h1>
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+## 🚀 Run Locally (Linux and Mac)
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+1.  **Download Dependencies**
 
-## 🚀 Quick start
+    **Code editor:**
 
-1.  **Create a Gatsby site.**
+    Strongly recommend vscode. (other options: sublime, atom, brackets)
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+    **Install node:**
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
-
-1.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
+    first check version
 
     ```shell
-    cd my-default-starter/
-    gatsby develop
+    $ node -v
     ```
 
-1.  **Open the source code and start editing!**
+    If nothing comes up use homebrew to install.
+
+    ```shell
+    $ brew install node
+    ```
+
+    Now when you run the first command you should have an up to date version of node.
+    Preferably over 10.0.0
+
+    **Create a github account and set up ssl:**
+
+    - Go to github.com and create an account
+    - Find SSH keys section github.com/setting/keys
+    - Generate and paste key into github (may already have a key in ~/.ssh)
+
+2)  **Download the project.**
+
+    Learn basics of folder navigation wither terminal.
+
+    Go to documents folder
+
+    ```shell
+    $ cd ~/Documents
+    ```
+
+    clone the project (set up ssl for your git hub account)
+
+    ```shell
+    $ git clone git@github.com:BenLirio/relay.git
+    ```
+
+    Enter project and open it up in editor (vscode)
+
+    ```shell
+    $ cd relay
+    $ code .
+    ```
+
+3.  **Development environment**
+
+    **Download Dependencies**
+
+    ```shell
+    $ npm install
+    ```
+
+    **Start Development Server**
+
+    ```shell
+    $ npm run develop
+    ```
+
+    Result should look like this
 
     Your site is now running at `http://localhost:8000`!
 
     _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
-
-## 🧐 What's inside?
+## What this project containes?
 
 A quick look at the top-level files and directories you'll see in a Gatsby project.
 
@@ -82,18 +124,22 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 12. **`README.md`**: A text file containing useful reference information about your project.
 
-## 🎓 Learning Gatsby
+## 🎓 Learning React and Gatsby
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
+React tutorials: https://reactjs.org/tutorial/tutorial.html
 
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+Gatsby documentation:https://www.gatsbyjs.org/
 
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+Recommendation focus more on React concepts rather than how gatsby actually works. It is a bit confusing but Gatsby is a framework built on top of React framework which is built on top of browser code (HTML, JavaScript, CSS)
 
-## 💫 Deploy
+## Deploy
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+Deployment is using firebase, you will have to install dependencies for that.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/gatsbyjs/gatsby-starter-default)
+Once you are ready use:
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+```shell
+$ firebase deploy
+```
+
+May have to alter some permissions to get this to work
