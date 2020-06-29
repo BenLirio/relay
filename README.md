@@ -1,7 +1,7 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+    <img alt="Gatsby" src="https://therelayresource.com/wp-content/uploads/2020/06/relay-logo-white-background-1.svg" width="60" />
   </a>
 </p>
 <h1 align="center">
