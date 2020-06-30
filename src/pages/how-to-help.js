@@ -1,11 +1,14 @@
 import React from "react"
 import Layout from "../components/Layout"
+import PageContextProvider from "../context/PageContext"
 
-const HowToHelp = () => {
+const HowToHelp = props => {
   return (
-    <Layout>
-      <h1>How to Help</h1>
-    </Layout>
+    <PageContextProvider {...props}>
+      <Layout>
+        <h1>How to Help</h1>
+      </Layout>
+    </PageContextProvider>
   )
 }
 

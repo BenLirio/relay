@@ -1,23 +1,26 @@
 import React from "react"
 import Layout from "../components/Layout"
 import { Link } from "gatsby"
+import PageContextProvider from "../context/PageContext"
 
-const tipsAndAdvice = ({ data }) => {
-  const posts = data.wordpress.posts.nodes
+const tipsAndAdvice = props => {
+  const posts = props.data.wordpress.posts.nodes
 
   return (
-    <Layout>
-      Tips and Advice
-      <ul>
-        {posts.map(post => {
-          return (
-            <li key={post.id}>
-              <Link to={`/${post.slug}`}>{post.title}</Link>
-            </li>
-          )
-        })}
-      </ul>
-    </Layout>
+    <PageContextProvider {...props}>
+      <Layout>
+        Tips and Advice
+        <ul>
+          {posts.map(post => {
+            return (
+              <li key={post.id}>
+                <Link to={`/${post.slug}`}>{post.title}</Link>
+              </li>
+            )
+          })}
+        </ul>
+      </Layout>
+    </PageContextProvider>
   )
 }
 

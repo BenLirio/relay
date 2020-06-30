@@ -1,0 +1,10 @@
+.dropDown {
+  position: absolute;
+  top: 1rem;
+  padding: 0;
+  background: #333333;
+  visibility: hidden;
+}
+.dropDownNavItem:hover > .dropDown {
+  visibility: visible;
+}
