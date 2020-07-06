@@ -8,7 +8,8 @@ const post = props => {
     <PageContextProvider {...props}>
       <Layout>
         <h1>{title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: content }}></div>
+        <section>{content}</section>
+        {/* <div dangerouslySetInnerHTML={{ __html: content }}></div> */}
       </Layout>
     </PageContextProvider>
   )
