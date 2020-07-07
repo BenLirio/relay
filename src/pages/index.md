@@ -2,7 +2,7 @@
 templateKey: index-page
 title: The Relay Resource
 image: /img/home-jumbotron.jpg
-heading: Heading 1
+heading: Updates
 subheading: A COVID-19 Resource
 mainpitch:
   title: Why Relay
