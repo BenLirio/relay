@@ -19,16 +19,16 @@ class BlogRoll extends React.Component {
                   }`}
               >
                 <header>
-                  {/* {post.frontmatter.featuredimage ? (
+                  {post.featuredImage.node.link ? (
                     <div className="featured-thumbnail">
                       <PreviewCompatibleImage
                         imageInfo={{
-                          image: post.frontmatter.featuredimage,
-                          alt: `featured image thumbnail for post ${post.frontmatter.title}`,
+                          image: post.featuredImage.node.link,
+                          alt: `featured image thumbnail for post ${post.title}`,
                         }}
                       />
                     </div>
-                  ) : null} */}
+                  ) : null}
                   <p className="post-meta">
                     <Link
                       className="title has-text-primary is-size-4"
@@ -79,6 +79,11 @@ export default () => (
                 uri
                 date
                 excerpt
+                featuredImage {
+                  node {
+                    link
+                  }
+                }
               }
             }
           }
