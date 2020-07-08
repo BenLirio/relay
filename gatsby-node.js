@@ -22,6 +22,16 @@ exports.createPages = ({ actions, graphql }) => {
           }
         }
       }
+      wordpress {
+        posts {
+          edges {
+            node {
+              id
+              slug
+            }
+          }
+        }
+      }
     }
   `).then(result => {
     if (result.errors) {
@@ -30,6 +40,7 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     const posts = result.data.allMarkdownRemark.edges
+    const wordpress = result.data.wordpress
 
     posts.forEach(edge => {
       const id = edge.node.id
@@ -45,6 +56,18 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
+    // Custom wordpress post pages
+    wordpress.posts.edges.forEach(edge => {
+      const id = edge.node.id
+      createPage({
+        path: edge.node.slug,
+        component: path.resolve(`src/templates/wordpress-post.js`),
+        context: {
+          id
+        }
+      })
+    })
+
 
     // Tag pages:
     let tags = []
