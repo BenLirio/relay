@@ -6,7 +6,7 @@ import PreviewCompatibleImage from './PreviewCompatibleImage'
 class BlogRoll extends React.Component {
   render() {
     const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
+    const { edges: posts } = data.wordpress.posts
 
     return (
       <div className="columns is-multiline">
@@ -15,11 +15,11 @@ class BlogRoll extends React.Component {
             <div className="is-parent column is-6" key={post.id}>
               <article
                 className={`blog-list-item tile is-child box notification ${
-                  post.frontmatter.featuredpost ? 'is-featured' : ''
-                }`}
+                  'post.frontmatter.featuredpost' ? 'is-featured' : ''
+                  }`}
               >
                 <header>
-                  {post.frontmatter.featuredimage ? (
+                  {/* {post.frontmatter.featuredimage ? (
                     <div className="featured-thumbnail">
                       <PreviewCompatibleImage
                         imageInfo={{
@@ -28,17 +28,17 @@ class BlogRoll extends React.Component {
                         }}
                       />
                     </div>
-                  ) : null}
+                  ) : null} */}
                   <p className="post-meta">
                     <Link
                       className="title has-text-primary is-size-4"
-                      to={post.fields.slug}
+                      to={post.uri}
                     >
-                      {post.frontmatter.title}
+                      {post.title}
                     </Link>
                     <span> &bull; </span>
                     <span className="subtitle is-size-5 is-block">
-                      {post.frontmatter.date}
+                      {post.date}
                     </span>
                   </p>
                 </header>
@@ -46,7 +46,7 @@ class BlogRoll extends React.Component {
                   {post.excerpt}
                   <br />
                   <br />
-                  <Link className="button" to={post.fields.slug}>
+                  <Link className="button" to={post.uri}>
                     Keep Reading →
                   </Link>
                 </p>
@@ -58,18 +58,31 @@ class BlogRoll extends React.Component {
   }
 }
 
-BlogRoll.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-}
+// BlogRoll.propTypes = {
+//   data: PropTypes.shape({
+//     allMarkdownRemark: PropTypes.shape({
+//       edges: PropTypes.array,
+//     }),
+//   }),
+// }
 
 export default () => (
   <StaticQuery
     query={graphql`
       query BlogRollQuery {
+        wordpress {
+          posts {
+            edges {
+              node {
+                id
+                title
+                uri
+                date
+                excerpt
+              }
+            }
+          }
+        }
         allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
           filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
