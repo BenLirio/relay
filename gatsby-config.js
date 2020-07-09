@@ -83,6 +83,14 @@ module.exports = {
         // Url to query from 
         url: "https://therelayresource.com/graphql"
       }
+    },
+    {
+      resolve: 'gatsby-source-google-sheets',
+      options: {
+        spreadsheetId: '1ZarUDaXOGxN6cedlX2mLl6lbF_uGxKMnO4OXisLpM8s',
+        worksheetTitle: 'people',
+        credentials: require('./relay-cms-key.json')
+      }
     }
   ],
 }

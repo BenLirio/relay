@@ -17,6 +17,7 @@
     "gatsby-remark-images": "^3.2.6",
     "gatsby-remark-relative-images": "^0.3.0",
     "gatsby-source-filesystem": "^2.2.5",
+    "gatsby-source-google-sheets": "^1.1.1",
     "gatsby-source-graphql": "^2.6.1",
     "gatsby-transformer-remark": "^2.7.5",
     "gatsby-transformer-sharp": "^2.4.7",

@@ -58,24 +58,22 @@ const BlogPost = ({ data }) => {
   const { wordpress: { post } } = data
 
   return (
-    <Layout>
-      <BlogPostTemplate
-        content={post.content}
-        contentComponent={HTMLContent}
-        description={post.excerpt}
-        helmet={
-          <Helmet titleTemplate="%s | Blog">
-            <title>{`${post.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.excerpt}`}
-            />
-          </Helmet>
-        }
-        tags={["post.frontmatter.tags"]}
-        title={post.title}
-      />
-    </Layout>
+    <BlogPostTemplate
+      content={post.content}
+      contentComponent={HTMLContent}
+      description={post.excerpt}
+      helmet={
+        <Helmet titleTemplate="%s | Blog">
+          <title>{`${post.title}`}</title>
+          <meta
+            name="description"
+            content={`${post.excerpt}`}
+          />
+        </Helmet>
+      }
+      tags={["post.frontmatter.tags"]}
+      title={post.title}
+    />
   )
 }
 
