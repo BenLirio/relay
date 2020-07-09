@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../../components/Layout'
+import People from '../../components/People'
 
 
 export const AboutPageTemplate = ({ title }) => {
@@ -13,6 +13,7 @@ export const AboutPageTemplate = ({ title }) => {
               <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
                 {title}
               </h2>
+              <People />
             </div>
           </div>
         </div>
