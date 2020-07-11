@@ -1,20 +1,19 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import { Helmet } from 'react-helmet'
 import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
+import CategoryPosts from '../components/CategoryPosts'
 
-export const BlogPostTemplate = ({
+export const CategoryPageTemplate = ({
   content,
   contentComponent,
   description,
   tags,
   title,
   helmet,
+  posts
 }) => {
-  const PostContent = contentComponent || Content
 
   return (
     <section className="section">
@@ -26,7 +25,7 @@ export const BlogPostTemplate = ({
               {title}
             </h1>
             <p>{description}</p>
-            <PostContent content={content} />
+            <CategoryPosts posts={posts} />
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
                 <h4>Tags</h4>
@@ -46,21 +45,14 @@ export const BlogPostTemplate = ({
   )
 }
 
-// BlogPostTemplate.propTypes = {
-//   content: PropTypes.node.isRequired,
-//   contentComponent: PropTypes.func,
-//   description: PropTypes.string,
-//   title: PropTypes.string,
-//   helmet: PropTypes.object,
-// }
 
-const BlogPost = ({ data }) => {
+const CategoryPage = ({ data }) => {
   const { wordpress: { category } } = data
 
   const { wordpress: { posts } } = data
-  console.log('posts', posts)
   return (
-    <BlogPostTemplate
+    <CategoryPageTemplate
+      posts={posts.nodes}
       content={'category.content'}
       contentComponent={'HTMLContent'}
       description={'post.excerpt'}
@@ -79,7 +71,7 @@ const BlogPost = ({ data }) => {
   )
 }
 
-export default BlogPost
+export default CategoryPage
 
 export const pageQuery = graphql`
   query WordpressCategoryByID($id: ID!, $databaseId: Int!) {
@@ -91,6 +83,8 @@ export const pageQuery = graphql`
       posts(where: {categoryId: $databaseId}) {
         nodes {
           title
+          id
+          uri
         }
       }
     }
