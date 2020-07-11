@@ -31,6 +31,15 @@ exports.createPages = ({ actions, graphql }) => {
             }
           }
         }
+        categories {
+          edges {
+            node {
+              id
+              uri
+              databaseId
+            }
+          }
+        }
       }
     }
   `).then(result => {
@@ -63,7 +72,18 @@ exports.createPages = ({ actions, graphql }) => {
         path: edge.node.slug,
         component: path.resolve(`src/templates/wordpress-post.js`),
         context: {
-          id
+          id,
+        }
+      })
+    })
+    // Categories pages
+    wordpress.categories.edges.forEach(({ node: category }) => {
+      createPage({
+        path: category.uri,
+        component: path.resolve(`src/templates/wordpress-category.js`),
+        context: {
+          id: category.id,
+          databaseId: category.databaseId
         }
       })
     })
