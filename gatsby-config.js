@@ -89,7 +89,7 @@ module.exports = {
       options: {
         spreadsheetId: '1ZarUDaXOGxN6cedlX2mLl6lbF_uGxKMnO4OXisLpM8s',
         worksheetTitle: 'people',
-        credentials: require('./relay-cms-key.json')
+        credentials: require('./keys/relay-cms-key.json')
       }
     }
   ],

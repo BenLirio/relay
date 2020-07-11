@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+
 import { Link, graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
@@ -14,6 +14,7 @@ export const IndexPageTemplate = ({
   mainpitch,
   description,
   intro,
+  categories
 }) => (
     <div>
       <div
@@ -64,6 +65,11 @@ export const IndexPageTemplate = ({
           </h3>
         </div>
       </div>
+      <div style={{ display: 'flex', justifyContent: 'space-evenly', background: '#333333', padding: '10px' }}>{categories.map(category => {
+        return <div key={category.id}>
+          <Link style={{ color: '#eeeeee' }} to={category.uri}>{category.name}</Link>
+        </div>
+      })}</div>
       <section className="section section--gradient">
         <div className="container">
           <div className="section">
@@ -114,21 +120,11 @@ export const IndexPageTemplate = ({
     </div>
   )
 
-IndexPageTemplate.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  title: PropTypes.string,
-  heading: PropTypes.string,
-  subheading: PropTypes.string,
-  mainpitch: PropTypes.object,
-  description: PropTypes.string,
-  intro: PropTypes.shape({
-    blurbs: PropTypes.array,
-  }),
-}
 
+const EXCLUDED_CATEGORIES = ['Uncategorized', 'Reliable Sources', 'Tested Positive']
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
-
+  const { edges: categories } = data.wordpress.categories
   return (
     <IndexPageTemplate
       image={frontmatter.image}
@@ -138,16 +134,9 @@ const IndexPage = ({ data }) => {
       mainpitch={frontmatter.mainpitch}
       description={frontmatter.description}
       intro={frontmatter.intro}
+      categories={categories.map(category => category.node).filter(category => !EXCLUDED_CATEGORIES.includes(category.name))}
     />
   )
-}
-
-IndexPage.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object,
-    }),
-  }),
 }
 
 export default IndexPage
@@ -184,6 +173,17 @@ export const pageQuery = graphql`
           }
           heading
           description
+        }
+      }
+    }
+    wordpress {
+      categories {
+        edges {
+          node {
+            name
+            id
+            uri
+          }
         }
       }
     }
