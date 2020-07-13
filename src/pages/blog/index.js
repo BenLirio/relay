@@ -11,7 +11,7 @@ const Index = ({ data }) => {
   return (
     <>
       <FeatureImage image={data.image}>
-        <Typography variant="h1" color="">Feature Image</Typography>
+        <Typography variant="h1" color="primary">Feature Image</Typography>
       </FeatureImage>
       <h1>Categories</h1>
       <CategoryBar categories={data.wordpress.categories} />
