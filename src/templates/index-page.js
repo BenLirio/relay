@@ -122,7 +122,7 @@ const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
   return (
     <IndexPageTemplate
-      image={frontmatter.image}
+      image={data.image}
       title={frontmatter.title}
       heading={frontmatter.heading}
       subheading={frontmatter.subheading}
@@ -141,13 +141,6 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
         heading
         subheading
         mainpitch {
@@ -168,6 +161,13 @@ export const pageQuery = graphql`
           }
           heading
           description
+        }
+      }
+    }
+    image: file(relativePath: { eq: "home-jumbotron.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 400, maxHeight: 200) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
