@@ -60,12 +60,6 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-plugin-netlify-cms",
-      options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
-      },
-    },
-    {
       resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules
       options: {
         develop: true, // Activates purging in npm run develop
@@ -91,6 +85,7 @@ module.exports = {
         worksheetTitle: 'people',
         credentials: require('./keys/relay-cms-key.json')
       }
-    }
+    },
+    `gatsby-plugin-material-ui`
   ],
 }

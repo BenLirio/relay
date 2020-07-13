@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Button } from '@material-ui/core'
 import Layout from '../../components/Layout'
 import BlogRoll from '../../components/BlogRoll'
 import { Link } from 'gatsby'
@@ -33,6 +33,7 @@ const Index = ({ data }) => {
         <Link style={{ color: '#eeeeee' }} to={category.uri}>{category.name}</Link>
       </div>
     })}</div>
+    <Button>test</Button>
     <section className="section">
       <div className="container">
         <div className="content">
