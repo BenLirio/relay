@@ -1,6 +1,6 @@
 import React from 'react'
 import People from '../../components/People'
-import { Typography } from '@material-ui/core'
+import { Typography, Grid, Container } from '@material-ui/core'
 import FeatureImage from '../../components/FeatureImage'
 
 
@@ -10,9 +10,15 @@ export const AboutPage = ({ data }) => {
   return (
     <>
       <FeatureImage image={data.image}>
-        <Typography>About</Typography>
+        <Typography variant="h1">About</Typography>
       </FeatureImage>
-      <People />
+      <Container fixed>
+        <Grid container>
+          <Grid item xs={12}>
+            <People />
+          </Grid>
+        </Grid>
+      </Container>
     </>
   )
 }

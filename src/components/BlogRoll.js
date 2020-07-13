@@ -29,9 +29,8 @@ const BlogRoll = () => {
   return (
     <Grid container spacing={3}>
       {edges.map(({ node }) => {
-        console.log('node.featuredImage.node.mediaItemUrl', node.featuredImage.node.mediaItemUrl)
         return (
-          <Grid item xs={6}>
+          <Grid key={node.id} item xs={6}>
             <Card key={node.id}>
               <CardActionArea component={Link} to={node.uri}>
                 <CardMedia
