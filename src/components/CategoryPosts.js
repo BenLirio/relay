@@ -1,9 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-
 const CategoryPosts = ({ posts }) => {
-  console.log('posts', posts)
   return (
     <div>
       {posts.map(post => {

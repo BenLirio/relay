@@ -1,8 +1,6 @@
 import React from 'react'
 import { Button, Typography } from '@material-ui/core'
-import Layout from '../../components/Layout'
 import BlogRoll from '../../components/BlogRoll'
-import { Link } from 'gatsby'
 import CategoryBar from '../../components/CategoryBar'
 import FeatureImage from '../../components/FeatureImage'
 
@@ -13,7 +11,6 @@ const Index = ({ data }) => {
       <FeatureImage image={data.image}>
         <Typography variant="h1" color="primary">Feature Image</Typography>
       </FeatureImage>
-      <h1>Categories</h1>
       <CategoryBar categories={data.wordpress.categories} />
       <Button>test</Button>
       <section className="section">
