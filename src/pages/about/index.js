@@ -1,12 +1,10 @@
-import React from 'react'
-import People from '../../components/People'
-import { Typography, Grid, Container } from '@material-ui/core'
-import FeatureImage from '../../components/FeatureImage'
-
+import React from "react"
+import People from "../../components/People"
+import { Typography, Grid, Container, Button } from "@material-ui/core"
+import FeatureImage from "../../components/FeatureImage"
 
 export const AboutPage = ({ data }) => {
-
-  console.log('data', data)
+  console.log("data", data)
   return (
     <>
       <FeatureImage image={data.image}>
@@ -15,6 +13,9 @@ export const AboutPage = ({ data }) => {
       <Container fixed>
         <Grid container>
           <Grid item xs={12}>
+            <Button variant="contained" color="primary">
+              Learn more
+            </Button>
             <People />
           </Grid>
         </Grid>
@@ -23,9 +24,7 @@ export const AboutPage = ({ data }) => {
   )
 }
 
-
 export default AboutPage
-
 
 export const pageQuery = graphql`
   query AboutPage {
@@ -38,4 +37,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
