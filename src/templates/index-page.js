@@ -5,6 +5,7 @@ import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
+import CategoryBar from '../components/CategoryBar'
 
 export const IndexPageTemplate = ({
   image,
@@ -65,11 +66,7 @@ export const IndexPageTemplate = ({
           </h3>
         </div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-evenly', background: '#333333', padding: '10px' }}>{categories.map(category => {
-        return <div key={category.id}>
-          <Link style={{ color: '#eeeeee' }} to={category.uri}>{category.name}</Link>
-        </div>
-      })}</div>
+      <CategoryBar categories={categories} />
       <section className="section section--gradient">
         <div className="container">
           <div className="section">
@@ -121,10 +118,8 @@ export const IndexPageTemplate = ({
   )
 
 
-const EXCLUDED_CATEGORIES = ['Uncategorized', 'Reliable Sources', 'Tested Positive']
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
-  const { edges: categories } = data.wordpress.categories
   return (
     <IndexPageTemplate
       image={frontmatter.image}
@@ -134,7 +129,7 @@ const IndexPage = ({ data }) => {
       mainpitch={frontmatter.mainpitch}
       description={frontmatter.description}
       intro={frontmatter.intro}
-      categories={categories.map(category => category.node).filter(category => !EXCLUDED_CATEGORIES.includes(category.name))}
+      categories={data.wordpress.categories}
     />
   )
 }
