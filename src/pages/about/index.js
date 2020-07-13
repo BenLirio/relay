@@ -1,31 +1,35 @@
 import React from 'react'
 import People from '../../components/People'
+import { Typography } from '@material-ui/core'
+import FeatureImage from '../../components/FeatureImage'
 
 
-export const AboutPageTemplate = ({ title }) => {
+export const AboutPage = ({ data }) => {
 
+  console.log('data', data)
   return (
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <div className="section">
-              <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                {title}
-              </h2>
-              <People />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <>
+      <FeatureImage image={data.image}>
+        <Typography>About</Typography>
+      </FeatureImage>
+      <People />
+    </>
   )
 }
 
-const AboutPage = () => {
-  return (
-    <AboutPageTemplate title="about" />
-  )
-}
 
 export default AboutPage
+
+
+export const pageQuery = graphql`
+  query AboutPage {
+    image: file(relativePath: { eq: "home-jumbotron.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 400, maxHeight: 200) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`
+
