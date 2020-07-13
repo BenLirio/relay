@@ -1,21 +1,33 @@
-import React from "react"
+import React, { useState } from "react"
 import People from "../../components/People"
-import { Typography, Grid, Container, Button } from "@material-ui/core"
+import { Typography, Grid, Container, AppBar, Tabs, Tab } from "@material-ui/core"
 import FeatureImage from "../../components/FeatureImage"
 
 export const AboutPage = ({ data }) => {
-  console.log("data", data)
+  const allyProps = (index) => {
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`
+    }
+  }
+  const [value, setValue] = useState(0)
+  const handleChange = (event, newValue) => {
+    setValue(newValue)
+  }
   return (
     <>
       <FeatureImage image={data.image}>
         <Typography variant="h1">About</Typography>
       </FeatureImage>
+      <AppBar position="static">
+        <Tabs value={value} onChange={handleChange}>
+          <Tab label="Our Mission" />
+          <Tab label="Our team" />
+        </Tabs>
+      </AppBar>
       <Container fixed>
         <Grid container>
           <Grid item xs={12}>
-            <Button variant="contained" color="primary">
-              Learn more
-            </Button>
             <People />
           </Grid>
         </Grid>
