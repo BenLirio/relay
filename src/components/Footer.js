@@ -1,12 +1,22 @@
 import React from 'react'
-import { Container, Typography, Box } from '@material-ui/core'
+import { Container, Typography, Box, Grid } from '@material-ui/core'
 
 const Footer = class extends React.Component {
   render() {
     return (
-      <Box style={{ background: '#333333' }}>
+      <Box bgcolor="primary.main">
         <Container fixed>
-          <Typography variant="h1" color="primary">Footer</Typography>
+          <Grid container>
+            <Grid item xs={4}>
+              <Typography variant="h4">About Us</Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <Typography variant="h4">How to Help</Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <Typography variant="h4">Contact Us</Typography>
+            </Grid>
+          </Grid>
         </Container>
       </Box>
     )
