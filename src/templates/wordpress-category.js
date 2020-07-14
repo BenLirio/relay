@@ -81,6 +81,7 @@ export const pageQuery = graphql`
         node {
           title
           id
+          path
         }
       }
     }

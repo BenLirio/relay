@@ -8,7 +8,7 @@ const CategoryPosts = ({ allWordpressPost }) => {
       {allWordpressPost.edges.map(({ node }) => {
         return (
           <div key={node.id}>
-            <Link to={node.uri}>{node.title}</Link>
+            <Link to={node.path}>{node.title}</Link>
           </div>
         )
       })}
