@@ -14,7 +14,7 @@ import {
 const BlogRoll = () => {
   const { allWordpressPost } = useStaticQuery(graphql`
     query PostQuery {
-      allWordpressPost {
+      allWordpressPost(limit: 6) {
         edges {
           node {
             title
