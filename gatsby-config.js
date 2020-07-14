@@ -84,6 +84,7 @@ module.exports = {
         baseUrl: "therelayresource.com",
         protocol: "https",
         restApiPrefix: "wp-json",
+        useACF: true,
       },
     },
     {

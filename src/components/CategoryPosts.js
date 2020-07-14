@@ -1,12 +1,16 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from "react"
+import { Link } from "gatsby"
 
-const CategoryPosts = ({ posts }) => {
+const CategoryPosts = ({ allWordpressPost }) => {
+  console.log("allWordpressPost", allWordpressPost)
   return (
     <div>
-      {posts.map(post => {
-        return <div key={post.id}>
-          <Link to={post.uri}>{post.title}</Link></div>
+      {allWordpressPost.edges.map(({ node }) => {
+        return (
+          <div key={node.id}>
+            <Link to={node.uri}>{node.title}</Link>
+          </div>
+        )
       })}
     </div>
   )

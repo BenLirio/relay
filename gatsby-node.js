@@ -22,15 +22,24 @@ exports.createPages = ({ actions, graphql }) => {
           }
         }
       }
-      wordpress {
-        posts {
-          edges {
-            node {
-              id
-              slug
-            }
+      allWordpressPost(limit: 6) {
+        edges {
+          node {
+            id
+            path
           }
         }
+      }
+      allWordpressCategory {
+        edges {
+          node {
+            id
+            path
+            wordpress_id
+          }
+        }
+      }
+      wordpress {
         categories {
           edges {
             node {
@@ -50,6 +59,29 @@ exports.createPages = ({ actions, graphql }) => {
 
     const posts = result.data.allMarkdownRemark.edges
     const wordpress = result.data.wordpress
+    const { allWordpressPost } = result.data
+    const { allWordpressCategory } = result.data
+
+    allWordpressPost.edges.forEach(({ node }) => {
+      createPage({
+        path: node.path,
+        component: path.resolve(`src/templates/wordpress-post.js`),
+        context: {
+          id: node.id,
+        },
+      })
+    })
+
+    allWordpressCategory.edges.forEach(({ node }) => {
+      createPage({
+        path: node.path,
+        component: path.resolve(`src/templates/wordpress-category.js`),
+        context: {
+          id: node.id,
+          wordpress_id: node.wordpress_id,
+        },
+      })
+    })
 
     posts.forEach(edge => {
       const id = edge.node.id
@@ -65,29 +97,17 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
-    // Custom wordpress post pages
-    wordpress.posts.edges.forEach(edge => {
-      const id = edge.node.id
-      createPage({
-        path: edge.node.slug,
-        component: path.resolve(`src/templates/wordpress-post.js`),
-        context: {
-          id,
-        }
-      })
-    })
     // Categories pages
-    wordpress.categories.edges.forEach(({ node: category }) => {
-      createPage({
-        path: category.uri,
-        component: path.resolve(`src/templates/wordpress-category.js`),
-        context: {
-          id: category.id,
-          databaseId: category.databaseId
-        }
-      })
-    })
-
+    // wordpress.categories.edges.forEach(({ node: category }) => {
+    //   createPage({
+    //     path: category.uri,
+    //     component: path.resolve(`src/templates/wordpress-category.js`),
+    //     context: {
+    //       id: category.id,
+    //       databaseId: category.databaseId,
+    //     },
+    //   })
+    // })
 
     // Tag pages:
     let tags = []
