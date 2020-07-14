@@ -1,6 +1,6 @@
 import React from "react"
 import { Toolbar, Button, AppBar } from "@material-ui/core"
-import { Link, useStaticQuery } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
 const IGNORED_CATEGORIES = ["Uncategorized", "Caregiving", "Tested Positive"]
 

@@ -6,7 +6,6 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sass",
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: "gatsby-source-filesystem",
@@ -24,6 +23,9 @@ module.exports = {
     },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    {
+      resolve: `gatsby-theme-material-ui`,
+    },
     {
       resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules
       options: {
@@ -62,6 +64,5 @@ module.exports = {
         credentials: require("./keys/relay-cms-key.json"),
       },
     },
-    `gatsby-plugin-material-ui`,
   ],
 }

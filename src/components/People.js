@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 
 const Person = ({ email, first }) => {
   return <div>
