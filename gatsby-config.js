@@ -74,6 +74,19 @@ module.exports = {
         protocol: "https",
         restApiPrefix: "wp-json",
         useACF: true,
+        auth: {
+          htaccess_user: "web-app",
+          htaccess_pass: "*DWuU(QaTV9&(FKuR91*bHp@",
+          htaccess_sendImmediately: false,
+        },
+        includedRoutes: [
+          "**/categories",
+          "**/posts",
+          "**/media",
+          "**/tags",
+          "**/taxonomies",
+          "**/users",
+        ]
       },
     },
     {
