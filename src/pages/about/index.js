@@ -3,6 +3,26 @@ import People from "../../components/People"
 import { Typography, Grid, Container, AppBar, Tabs, Tab } from "@material-ui/core"
 import FeatureImage from "../../components/FeatureImage"
 
+const OurMission = () => {
+  return (
+    <>
+      <Grid item xs={12}>
+        <Typography variant="h2">Our Mission</Typography>
+      </Grid>
+    </>
+  )
+}
+const OurTeam = () => {
+  return (
+    <>
+      <Grid item xs={12}>
+        <Typography variant="h2">Our Team</Typography>
+      </Grid>
+      <People />
+    </>
+  )
+}
+
 export const AboutPage = ({ data }) => {
   const [value, setValue] = useState(0)
   const handleChange = (event, newValue) => {
@@ -21,9 +41,7 @@ export const AboutPage = ({ data }) => {
       </AppBar>
       <Container fixed>
         <Grid container>
-          <Grid item xs={12}>
-            <People />
-          </Grid>
+          {value === 0 ? <OurMission /> : <OurTeam />}
         </Grid>
       </Container>
     </>
