@@ -12,19 +12,21 @@ import {
 } from "@material-ui/core"
 
 const BlogRoll = () => {
-  const { wordpress } = useStaticQuery(graphql`
+  const { allWordpressPost } = useStaticQuery(graphql`
     query PostQuery {
-      wordpress {
-        posts {
-          edges {
-            node {
-              id
-              title
-              uri
-              excerpt
-              featuredImage {
-                node {
-                  mediaItemUrl
+      allWordpressPost {
+        edges {
+          node {
+            title
+            path
+            id
+            excerpt
+            featured_media {
+              localFile {
+                childImageSharp {
+                  fluid {
+                    src
+                  }
                 }
               }
             }
@@ -34,20 +36,21 @@ const BlogRoll = () => {
     }
   `)
 
-  const { edges } = wordpress.posts
+  const { edges } = allWordpressPost
   console.log("edges", edges)
   return (
     <Grid container spacing={3}>
       {edges.map(({ node }) => {
+        const image = node.featured_media.localFile.childImageSharp.fluid.src
         return (
           <Grid key={node.id} item xs={6}>
             <Card key={node.id}>
-              <CardActionArea component={Link} to={node.uri}>
+              <CardActionArea component={Link} to={node.path}>
                 <CardMedia
                   style={{
                     height: "200px",
                   }}
-                  image={node.featuredImage.node.mediaItemUrl}
+                  image={image}
                 ></CardMedia>
                 <CardContent>
                   <Typography gutterBottom variant="h5">

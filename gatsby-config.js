@@ -73,19 +73,27 @@ module.exports = {
         // Arbitrary name for the remote schema Query type
         typeName: "WORDPRESS",
         // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
-        fieldName: 'wordpress',
-        // Url to query from 
-        url: "https://therelayresource.com/graphql"
-      }
+        fieldName: "wordpress",
+        // Url to query from
+        url: "https://therelayresource.com/graphql",
+      },
     },
     {
-      resolve: 'gatsby-source-google-sheets',
+      resolve: "gatsby-source-wordpress",
       options: {
-        spreadsheetId: '1ZarUDaXOGxN6cedlX2mLl6lbF_uGxKMnO4OXisLpM8s',
-        worksheetTitle: 'people',
-        credentials: require('./keys/relay-cms-key.json')
-      }
+        baseUrl: "therelayresource.com",
+        protocol: "https",
+        restApiPrefix: "wp-json",
+      },
     },
-    `gatsby-plugin-material-ui`
+    {
+      resolve: "gatsby-source-google-sheets",
+      options: {
+        spreadsheetId: "1ZarUDaXOGxN6cedlX2mLl6lbF_uGxKMnO4OXisLpM8s",
+        worksheetTitle: "people",
+        credentials: require("./keys/relay-cms-key.json"),
+      },
+    },
+    `gatsby-plugin-material-ui`,
   ],
 }
