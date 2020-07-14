@@ -9,12 +9,13 @@ import {
   CardActions,
   Button,
   Grid,
+  CardHeader,
 } from "@material-ui/core"
 
-const BlogRoll = () => {
+const BlogRoll = ({ width = 2, height = 3, excerpt = true }) => {
   const { allWordpressPost } = useStaticQuery(graphql`
     query PostQuery {
-      allWordpressPost(limit: 6) {
+      allWordpressPost(limit: 24) {
         edges {
           node {
             title
@@ -37,29 +38,27 @@ const BlogRoll = () => {
   `)
 
   const { edges } = allWordpressPost
-  console.log("edges", edges)
   return (
     <Grid container spacing={3}>
-      {edges.map(({ node }) => {
+      {[...edges].splice(0, width * height).map(({ node }) => {
         const image = node.featured_media.localFile.childImageSharp.fluid.src
         return (
-          <Grid key={node.id} item xs={6}>
+          <Grid key={node.id} item xs={12 / width}>
             <Card key={node.id}>
               <CardActionArea component={Link} to={node.path}>
+                <CardHeader title={node.title} />
                 <CardMedia
                   style={{
                     height: "200px",
                   }}
                   image={image}
                 ></CardMedia>
-                <CardContent>
-                  <Typography gutterBottom variant="h5">
-                    {node.title}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    {node.excerpt}
-                  </Typography>
-                </CardContent>
+                {excerpt ?
+                  <CardContent>
+                    <Typography variant="body2" color="textSecondary">
+                      {node.excerpt}
+                    </Typography>
+                  </CardContent> : null}
               </CardActionArea>
               <CardActions>
                 <Button size="small" color="primary">
