@@ -15,7 +15,7 @@ const Relay = ({ data }) => {
 
 export default Relay
 export const pageQuery = graphql`
-  query IndexPageTemplate {
+  query RelayQuery {
     image: file(relativePath: { eq: "home-jumbotron.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 400, maxHeight: 200) {

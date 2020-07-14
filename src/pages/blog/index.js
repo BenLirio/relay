@@ -5,7 +5,6 @@ import CategoryBar from "../../components/CategoryBar"
 import FeatureImage from "../../components/FeatureImage"
 
 const Index = ({ data }) => {
-  const { allWordpressCategory } = data
   return (
     <>
       <FeatureImage image={data.image}>
@@ -22,16 +21,7 @@ const Index = ({ data }) => {
 export default Index
 
 export const pageQuery = graphql`
-  query PostPageTemplate {
-    allWordpressCategory {
-      edges {
-        node {
-          name
-          id
-          path
-        }
-      }
-    }
+  query TipsAndAdviceQuery {
     image: file(relativePath: { eq: "home-jumbotron.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 400, maxHeight: 200) {
