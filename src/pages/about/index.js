@@ -4,12 +4,6 @@ import { Typography, Grid, Container, AppBar, Tabs, Tab } from "@material-ui/cor
 import FeatureImage from "../../components/FeatureImage"
 
 export const AboutPage = ({ data }) => {
-  const allyProps = (index) => {
-    return {
-      id: `simple-tab-${index}`,
-      'aria-controls': `simple-tabpanel-${index}`
-    }
-  }
   const [value, setValue] = useState(0)
   const handleChange = (event, newValue) => {
     setValue(newValue)

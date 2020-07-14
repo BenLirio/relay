@@ -1,13 +1,13 @@
 import React from 'react'
-import { StaticQuery, graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 
-const Person = ({ id, email, first }) => {
+const Person = ({ email, first }) => {
   return <div>
     {email} - {first}
   </div>
 }
 
-const People = (props) => {
+const People = () => {
   const { allGoogleSheetPeopleRow: people } = useStaticQuery(
     graphql`
       query GetPeople {
