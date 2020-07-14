@@ -68,17 +68,6 @@ module.exports = {
     }, // must be after other CSS plugins
     "gatsby-plugin-netlify", // make sure to keep it last in the array
     {
-      resolve: "gatsby-source-graphql",
-      options: {
-        // Arbitrary name for the remote schema Query type
-        typeName: "WORDPRESS",
-        // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
-        fieldName: "wordpress",
-        // Url to query from
-        url: "https://therelayresource.com/graphql",
-      },
-    },
-    {
       resolve: "gatsby-source-wordpress",
       options: {
         baseUrl: "therelayresource.com",

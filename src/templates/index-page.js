@@ -1,13 +1,10 @@
-import React from 'react'
+import React from "react"
 
-import { Link, graphql } from 'gatsby'
-
-import Layout from '../components/Layout'
-import Features from '../components/Features'
-import BlogRoll from '../components/BlogRoll'
-import CategoryBar from '../components/CategoryBar'
-import FeatureImage from '../components/FeatureImage'
-import { Typography, Grid, Container } from '@material-ui/core'
+import { graphql } from "gatsby"
+import BlogRoll from "../components/BlogRoll"
+import CategoryBar from "../components/CategoryBar"
+import FeatureImage from "../components/FeatureImage"
+import { Typography, Grid, Container } from "@material-ui/core"
 
 export const IndexPageTemplate = ({
   image,
@@ -17,22 +14,22 @@ export const IndexPageTemplate = ({
   mainpitch,
   description,
   intro,
-  categories
+  allWordpressCategory,
 }) => (
-    <>
-      <FeatureImage image={image}>
-        <Typography variant="h1">Relay Resource</Typography>
-      </FeatureImage>
-      <CategoryBar categories={categories} />
-      <Container fixed>
-        <BlogRoll />
-      </Container>
-    </>
-  )
-
+  <>
+    <FeatureImage image={image}>
+      <Typography variant="h1">Relay Resource</Typography>
+    </FeatureImage>
+    <CategoryBar allWordpressCategory={allWordpressCategory} />
+    <Container fixed>
+      <BlogRoll />
+    </Container>
+  </>
+)
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
+  const { allWordpressCategory } = data
   return (
     <IndexPageTemplate
       image={data.image}
@@ -42,7 +39,7 @@ const IndexPage = ({ data }) => {
       mainpitch={frontmatter.mainpitch}
       description={frontmatter.description}
       intro={frontmatter.intro}
-      categories={data.wordpress.categories}
+      allWordpressCategory={allWordpressCategory}
     />
   )
 }
@@ -84,14 +81,12 @@ export const pageQuery = graphql`
         }
       }
     }
-    wordpress {
-      categories {
-        edges {
-          node {
-            name
-            id
-            uri
-          }
+    allWordpressCategory {
+      edges {
+        node {
+          name
+          id
+          path
         }
       }
     }

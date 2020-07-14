@@ -1,17 +1,19 @@
-import React from 'react'
-import { Button, Typography } from '@material-ui/core'
-import BlogRoll from '../../components/BlogRoll'
-import CategoryBar from '../../components/CategoryBar'
-import FeatureImage from '../../components/FeatureImage'
-
+import React from "react"
+import { Button, Typography } from "@material-ui/core"
+import BlogRoll from "../../components/BlogRoll"
+import CategoryBar from "../../components/CategoryBar"
+import FeatureImage from "../../components/FeatureImage"
 
 const Index = ({ data }) => {
+  const { allWordpressCategory } = data
   return (
     <>
       <FeatureImage image={data.image}>
-        <Typography variant="h1" color="primary">Feature Image</Typography>
+        <Typography variant="h1" color="primary">
+          Feature Image
+        </Typography>
       </FeatureImage>
-      <CategoryBar categories={data.wordpress.categories} />
+      <CategoryBar allWordpressCategory={allWordpressCategory} />
       <Button>test</Button>
       <section className="section">
         <div className="container">
@@ -26,18 +28,14 @@ const Index = ({ data }) => {
 
 export default Index
 
-
-
 export const pageQuery = graphql`
   query PostPageTemplate {
-    wordpress {
-      categories {
-        edges {
-          node {
-            name
-            id
-            uri
-          }
+    allWordpressCategory {
+      edges {
+        node {
+          name
+          id
+          path
         }
       }
     }
@@ -50,4 +48,3 @@ export const pageQuery = graphql`
     }
   }
 `
-

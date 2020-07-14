@@ -39,17 +39,6 @@ exports.createPages = ({ actions, graphql }) => {
           }
         }
       }
-      wordpress {
-        categories {
-          edges {
-            node {
-              id
-              uri
-              databaseId
-            }
-          }
-        }
-      }
     }
   `).then(result => {
     if (result.errors) {
@@ -58,7 +47,6 @@ exports.createPages = ({ actions, graphql }) => {
     }
 
     const posts = result.data.allMarkdownRemark.edges
-    const wordpress = result.data.wordpress
     const { allWordpressPost } = result.data
     const { allWordpressCategory } = result.data
 
@@ -97,17 +85,6 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
-    // Categories pages
-    // wordpress.categories.edges.forEach(({ node: category }) => {
-    //   createPage({
-    //     path: category.uri,
-    //     component: path.resolve(`src/templates/wordpress-category.js`),
-    //     context: {
-    //       id: category.id,
-    //       databaseId: category.databaseId,
-    //     },
-    //   })
-    // })
 
     // Tag pages:
     let tags = []
