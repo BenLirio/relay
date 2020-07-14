@@ -13,15 +13,8 @@ const Index = ({ data }) => {
           Feature Image
         </Typography>
       </FeatureImage>
-      <CategoryBar allWordpressCategory={allWordpressCategory} />
-      <Button>test</Button>
-      <section className="section">
-        <div className="container">
-          <div className="content">
-            <BlogRoll />
-          </div>
-        </div>
-      </section>
+      <CategoryBar />
+      <BlogRoll />
     </>
   )
 }
