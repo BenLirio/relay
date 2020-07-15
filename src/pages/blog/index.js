@@ -1,10 +1,13 @@
 import React from "react"
-import { Typography } from "@material-ui/core"
+import { Typography, Container, Grid } from "@material-ui/core"
 import BlogRoll from "../../components/BlogRoll"
 import CategoryBar from "../../components/CategoryBar"
 import FeatureImage from "../../components/FeatureImage"
+import Posts from "../../components/Posts"
 
 const Index = ({ data }) => {
+  const { allWordpressPostArchive } = data
+  const { allWordpressPostRecent } = data
   return (
     <>
       <FeatureImage image={data.image}>
@@ -13,7 +16,22 @@ const Index = ({ data }) => {
         </Typography>
       </FeatureImage>
       <CategoryBar />
-      <BlogRoll />
+      <Container fixed>
+        <Grid container>
+          <Grid item xs={12}>
+            <Typography variant="h1">New Posts</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Posts allWordpressPost={allWordpressPostRecent} sizes={[12, 4, 4, 4, 6, 6]} />
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="h1">Archive</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Posts allWordpressPost={allWordpressPostArchive} variant="list" />
+          </Grid>
+        </Grid>
+      </Container>
     </>
   )
 }
@@ -26,6 +44,43 @@ export const pageQuery = graphql`
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    allWordpressPostRecent: allWordpressPost(limit: 6) {
+      edges {
+        node {
+          title
+          id
+          path
+          featured_media {
+            localFile {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid_tracedSVG
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    allWordpressPostArchive: allWordpressPost(limit: 20, skip: 6) {
+      edges {
+        node {
+          title
+          id
+          path
+          date(fromNow: true)
+          featured_media {
+            localFile {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid_tracedSVG
+                }
+              }
+            }
+          }
         }
       }
     }
