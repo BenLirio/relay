@@ -7,7 +7,9 @@ import { Container, Grid, Typography } from '@material-ui/core'
 const Relay = ({ data }) => {
   return (
     <div>
-      <FeatureImage image={data.image} />
+      <FeatureImage image={data.image}>
+        <Typography variant="h1">Relay</Typography>
+      </FeatureImage>
       <CategoryBar />
       <Container fixed>
         <Grid container>
