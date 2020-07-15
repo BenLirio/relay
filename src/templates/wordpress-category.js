@@ -1,15 +1,18 @@
 import React from "react"
 import { graphql } from "gatsby"
 import CategoryPosts from "../components/CategoryPosts"
-import { Typography } from "@material-ui/core"
+import { Typography, Container } from "@material-ui/core"
+import Posts from "../components/Posts"
 
 const CategoryPage = ({ data }) => {
   const { wordpressCategory } = data
   const { allWordpressPost } = data
   return (
     <>
-      <Typography variant="h1">{wordpressCategory.name}</Typography>
-      <CategoryPosts allWordpressPost={allWordpressPost} />
+      <Container fixed>
+        <Typography variant="h1">{wordpressCategory.name}</Typography>
+        <Posts allWordpressPost={allWordpressPost} />
+      </Container>
     </>
   )
 }
@@ -31,6 +34,16 @@ export const pageQuery = graphql`
           title
           id
           path
+          excerpt
+          featured_media {
+            localFile {
+              childImageSharp {
+                fluid {
+                  src
+                }
+              }
+            }
+          }
         }
       }
     }
