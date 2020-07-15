@@ -22,9 +22,9 @@ export default Index
 
 export const pageQuery = graphql`
   query TipsAndAdviceQuery {
-    image: file(relativePath: { eq: "home-jumbotron.jpg" }) {
+    image: file(relativePath: { eq: "feature-tips.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 400, maxHeight: 200) {
+        fluid {
           ...GatsbyImageSharpFluid
         }
       }

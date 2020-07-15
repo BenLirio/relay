@@ -29,7 +29,7 @@ export const howToHelpQuery = graphql`
   query howToHelpQuery {
     image: file(relativePath: { eq: "home-jumbotron.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 400, maxHeight: 200) {
+        fluid {
           ...GatsbyImageSharpFluid
         }
       }

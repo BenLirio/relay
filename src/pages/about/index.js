@@ -52,9 +52,9 @@ export default AboutPage
 
 export const pageQuery = graphql`
   query AboutPage {
-    image: file(relativePath: { eq: "home-jumbotron.jpg" }) {
+    image: file(relativePath: { eq: "feature-about.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 400, maxHeight: 200) {
+        fluid {
           ...GatsbyImageSharpFluid
         }
       }

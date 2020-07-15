@@ -1,30 +1,11 @@
 import React from 'react'
+import Img from 'gatsby-image'
 
-const FeatureImage = ({ image, children }) => {
+
+const FeatureImage = ({ image }) => {
   return (
-    <div
-      className="full-width-image margin-top-0"
-      style={{
-        backgroundImage: `url(${
-          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-          })`,
-        backgroundPosition: `top left`,
-        backgroundAttachment: `fixed`,
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          height: '150px',
-          lineHeight: '1',
-          justifyContent: 'space-around',
-          alignItems: 'left',
-          flexDirection: 'column',
-        }}
-      >
-        {children}
-      </div>
-    </div>
+    <Img style={{ height: 400 }} fluid={image.childImageSharp.fluid}></Img>
+
   )
 }
 
