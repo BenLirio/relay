@@ -20,6 +20,7 @@ const Relay = ({ data }) => {
         </Grid>
         <BlogRoll width={4} height={1} excerpt={false} />
         <Typography variant="h2">Covid Map</Typography>
+        <iframe src="https://ourworldindata.org/grapher/total-deaths-covid-19?country=ITA+ESP+USA" style={{ width: '100%', height: '600px', border: '0px none' }} ></iframe>
         <Typography variant="h2">How To Help</Typography>
         <Grid container alignItems="center">
           <Grid item xs={3}>
