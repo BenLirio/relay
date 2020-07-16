@@ -1,6 +1,5 @@
 import React from "react"
 import FeatureImage from "../components/FeatureImage"
-import BlogRoll from "../components/BlogRoll"
 import CategoryBar from "../components/CategoryBar"
 import { Button, Container, Grid, Typography } from "@material-ui/core"
 import OutlinedButton from "../components/OutlinedButton"
