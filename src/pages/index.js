@@ -4,8 +4,10 @@ import BlogRoll from "../components/BlogRoll"
 import CategoryBar from "../components/CategoryBar"
 import { Button, Container, Grid, Typography } from "@material-ui/core"
 import OutlinedButton from "../components/OutlinedButton"
+import Posts from "../components/Posts"
 
 const Relay = ({ data }) => {
+  const { allWordpressPost } = data
   return (
     <div>
       <FeatureImage image={data.image}>
@@ -18,7 +20,7 @@ const Relay = ({ data }) => {
             <Typography variant="h2">{"Top Stories"}</Typography>
           </Grid>
         </Grid>
-        <BlogRoll width={4} height={1} excerpt={false} />
+        <Posts allWordpressPost={allWordpressPost} sizes={[4, 4, 4]} />
         <Typography variant="h2">Covid Map</Typography>
         <iframe src="https://ourworldindata.org/grapher/total-deaths-covid-19?country=ITA+ESP+USA" style={{ width: '100%', height: '600px', border: '0px none' }} ></iframe>
         <Typography variant="h2">How To Help</Typography>
@@ -41,6 +43,24 @@ const Relay = ({ data }) => {
 export default Relay
 export const pageQuery = graphql`
   query RelayQuery {
+    allWordpressPost(limit: 3) {
+      edges {
+        node {
+          title
+          id
+          path
+          featured_media {
+            localFile {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid_tracedSVG
+                }
+              }
+            }
+          }
+        }
+      }
+    }
     image: file(relativePath: { eq: "feature-home.jpg" }) {
       childImageSharp {
         fluid {

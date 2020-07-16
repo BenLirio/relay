@@ -7,8 +7,8 @@ const Post = ({ node }) => {
   const fluid = node.featured_media.localFile.childImageSharp.fluid
   console.log('node', node)
   return (
-    <Card>
-      <CardActionArea component={Link} to={node.path}>
+    <Card style={{ height: '100%' }}>
+      <CardActionArea component={Link} to={node.path} style={{ height: '100%' }}>
         <CardHeader title={node.title} />
         <CardMedia component={Img} fluid={fluid}>
         </CardMedia>
@@ -24,7 +24,7 @@ const PostsGrid = ({ allWordpressPost, sizes }) => {
   const { edges } = allWordpressPost
   return (
     <>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} alignItems="stretch">
         {edges.map(({ node }, i) => {
           return (
             <Grid item key={node.id} xs={sizes[i] || 12}>
