@@ -2,12 +2,19 @@ import React, { useState } from "react"
 import People from "../../components/People"
 import { Typography, Grid, Container, AppBar, Tabs, Tab } from "@material-ui/core"
 import FeatureImage from "../../components/FeatureImage"
+import Img from 'gatsby-image'
 
-const OurMission = () => {
+const OurMission = ({ contentImage }) => {
   return (
     <>
       <Grid item xs={12}>
         <Typography variant="h2">Our Mission</Typography>
+      </Grid>
+      <Grid item xs={6}>
+        <Typography variant="body1">We are a group of students hoping to educate and inform people during this difficult time. We have partnered with professionals around the country to help provide reliable sources and information. This summer, we decided to launch Relay, a resource to help families dealing with COVID-19.  </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <Img fluid={contentImage.childImageSharp.fluid}></Img>
       </Grid>
     </>
   )
@@ -28,6 +35,7 @@ export const AboutPage = ({ data }) => {
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
+  const { contentImage } = data
   return (
     <>
       <FeatureImage image={data.image}>
@@ -41,7 +49,7 @@ export const AboutPage = ({ data }) => {
       </AppBar>
       <Container fixed>
         <Grid container>
-          {value === 0 ? <OurMission /> : <OurTeam />}
+          {value === 0 ? <OurMission contentImage={contentImage} /> : <OurTeam />}
         </Grid>
       </Container>
     </>
@@ -56,6 +64,13 @@ export const pageQuery = graphql`
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    contentImage: file(relativePath: { eq: "content.png" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }
