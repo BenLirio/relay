@@ -37,7 +37,9 @@ export const AboutPage = ({ data, location }) => {
   }
   const { contentImage } = data
   useEffect(() => {
-    handleChange('_', location.state.page)
+    if (location.state.page != undefined) {
+      handleChange('_', location.state.page)
+    }
   }, [location.state.page])
   return (
     <>

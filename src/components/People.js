@@ -2,19 +2,34 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Card, CardHeader, Grid, CardContent, Typography, Avatar, CardActionArea, Button, CardActions } from '@material-ui/core'
 
+class PersonData {
+  constructor(node) {
+    this.name = node.fullname || 'rando'
+    this.team = node.team || ''
+    this.position = node.position || null
+    this.school = node.school
+    this.instagram = node.instagram
+  }
+}
 const Person = ({ node }) => {
-  console.log('node', node)
+  const person = new PersonData(node)
   return (
     <>
       <Card>
         <CardHeader avatar={
-          <Avatar>{node.first[0]}</Avatar>
-        } title={`${node.first} ${node.last}`} subheader={"ROLE"} />
+          <Avatar>{person.name[0]}</Avatar>
+        } title={`${person.name}`} subheader={
+          <>
+            {person.school ? <Typography variant="body2">- {person.school}</Typography> : null}
+            {person.position ? <Typography variant="body2">- {person.position}</Typography> : null}
+            {person.team ? <Typography variant="body2">- {person.team}</Typography> : null}
+          </>
+        } />
         <CardContent>
-          <Typography variant="body1">short description about the persion here. This is going to be about a couple sentences</Typography>
+          <Typography variant="body1"></Typography>
         </CardContent>
         <CardActions>
-          <Button>profile</Button>
+          <Button>Profile</Button>
         </CardActions>
       </Card>
     </>
@@ -29,8 +44,10 @@ const People = () => {
           edges {
             node {
               id
-              email
-              first
+              fullname
+              position
+              team
+              school
             }
           }
         }
