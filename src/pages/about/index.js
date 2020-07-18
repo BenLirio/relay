@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import People from "../../components/People"
 import { Typography, Grid, Container, AppBar, Tabs, Tab } from "@material-ui/core"
 import FeatureImage from "../../components/FeatureImage"
@@ -30,12 +30,15 @@ const OurTeam = () => {
   )
 }
 
-export const AboutPage = ({ data }) => {
-  const [value, setValue] = useState(0)
+export const AboutPage = ({ data, location }) => {
+  const [value, setValue] = useState((location.state && location.state.page) || 0)
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
   const { contentImage } = data
+  useEffect(() => {
+    handleChange('_', location.state.page)
+  }, [location.state.page])
   return (
     <>
       <FeatureImage image={data.image}>
