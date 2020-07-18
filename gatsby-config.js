@@ -1,3 +1,4 @@
+const axios = require('axios')
 module.exports = {
   siteMetadata: {
     title: "Gatsby + Netlify CMS Starter",
@@ -45,7 +46,10 @@ module.exports = {
           "**/tags",
           "**/taxonomies",
           "**/users",
-        ]
+        ],
+        normalizers: normalizers => {
+          return [...normalizers, mapContentToJson]
+        }
       },
     },
     {
@@ -57,4 +61,29 @@ module.exports = {
       },
     },
   ],
+}
+const mapContentToJson = {
+  name: `mapContentToJson`,
+  normalizer: async ({ entities }) => {
+    const content = entities.filter(e => e.__type === `wordpress__POST`)
+    for (let i = 0; i < entities.length; i++) {
+      entity = entities[i]
+      if (entity.__type === `wordpress__POST`) {
+        try {
+          const res = await axios({
+            url: 'https://parser-zzgjhpjxia-uc.a.run.app/',
+            method: 'POST',
+            data: { html: entity.content }
+          })
+          console.log('res.data', res.data)
+          entity.foo = JSON.stringify(res.data)
+        } catch (error) {
+        }
+        if (!entity.foo) {
+          entity.foo = 'error'
+        }
+      }
+    }
+    return entities
+  }
 }
