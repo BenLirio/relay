@@ -55,7 +55,6 @@ const People = () => {
 
     `
   )
-  console.log('people', people)
   return (
     <>
       People - Data from <a href="https://docs.google.com/spreadsheets/d/1ZarUDaXOGxN6cedlX2mLl6lbF_uGxKMnO4OXisLpM8s/edit?usp=sharing">Google Sheets</a>

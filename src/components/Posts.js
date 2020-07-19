@@ -5,7 +5,6 @@ import Img from 'gatsby-image'
 
 const Post = ({ node }) => {
   const fluid = node.featured_media.localFile.childImageSharp.fluid
-  console.log('node', node)
   return (
     <Card style={{ height: '100%' }}>
       <CardActionArea component={Link} to={node.path} style={{ height: '100%' }}>

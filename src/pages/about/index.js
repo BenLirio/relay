@@ -31,16 +31,11 @@ const OurTeam = () => {
 }
 
 export const AboutPage = ({ data, location }) => {
-  const [value, setValue] = useState((location.state && location.state.page) || 0)
+  const [value, setValue] = useState(((location && location.state) && location.state.page) || 0)
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
   const { contentImage } = data
-  useEffect(() => {
-    if (location.state.page != undefined) {
-      handleChange('_', location.state.page)
-    }
-  }, [location.state.page])
   return (
     <>
       <FeatureImage image={data.image}>

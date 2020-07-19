@@ -5,8 +5,6 @@ import Img from 'gatsby-image'
 
 
 const HowToHelp = ({ data }) => {
-  console.log('data', data)
-
   return (
     <>
       <FeatureImage image={data.image}>

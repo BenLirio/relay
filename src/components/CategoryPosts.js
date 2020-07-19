@@ -2,7 +2,6 @@ import React from "react"
 import { Link } from "gatsby"
 
 const CategoryPosts = ({ allWordpressPost }) => {
-  console.log("allWordpressPost", allWordpressPost)
   return (
     <div>
       {allWordpressPost.edges.map(({ node }) => {
