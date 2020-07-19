@@ -14,7 +14,6 @@ const Index = ({ data }) => {
           Feature Image
         </Typography>
       </FeatureImage>
-      <CategoryBar />
       <Container fixed>
         <Grid container>
           <Grid item xs={12}>

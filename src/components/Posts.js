@@ -19,14 +19,14 @@ const Post = ({ node }) => {
   )
 }
 
-const PostsGrid = ({ allWordpressPost, sizes }) => {
+const PostsGrid = ({ allWordpressPost }) => {
   const { edges } = allWordpressPost
   return (
     <>
       <Grid container spacing={3} alignItems="stretch">
         {edges.map(({ node }, i) => {
           return (
-            <Grid item key={node.id} xs={sizes[i] || 12}>
+            <Grid item key={node.id} xs={12}>
               <Post node={node} />
             </Grid>)
         })}
@@ -56,9 +56,9 @@ const PostsList = ({ allWordpressPost }) => {
   )
 }
 
-const Posts = ({ allWordpressPost, sizes = [], variant = 'grid' }) => {
+const Posts = ({ allWordpressPost, variant = 'grid' }) => {
   if (variant === 'grid') {
-    return <PostsGrid allWordpressPost={allWordpressPost} sizes={sizes} />
+    return <PostsGrid allWordpressPost={allWordpressPost} />
   } else {
     return <PostsList allWordpressPost={allWordpressPost} />
   }

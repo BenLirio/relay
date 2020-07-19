@@ -12,14 +12,13 @@ const Relay = ({ data }) => {
       <FeatureImage image={data.image}>
         <Typography variant="h1">Relay</Typography>
       </FeatureImage>
-      <CategoryBar />
       <Container fixed>
         <Grid container>
           <Grid item xs={12}>
             <Typography variant="h2">{"Top Stories"}</Typography>
           </Grid>
         </Grid>
-        <Posts allWordpressPost={allWordpressPost} sizes={[4, 4, 4]} />
+        <Posts allWordpressPost={allWordpressPost} />
         <Typography variant="h2">Covid Map</Typography>
         <iframe src="https://ourworldindata.org/grapher/total-deaths-covid-19?country=ITA+ESP+USA" style={{ width: '100%', height: '600px', border: '0px none' }} ></iframe>
         <Typography variant="h2">How To Help</Typography>

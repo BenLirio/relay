@@ -19,29 +19,6 @@ const secondary = {
   dark: '#ffa36e',
   contrastText: '#fff'
 }
-const h1 = {
-  fontSize: '5rem'
-}
-const h2 = {
-  fontSize: '4rem'
-}
-const h3 = {
-
-}
-const h4 = {
-
-}
-const h5 = {
-
-}
-const typography = {
-  fontFamily: '"Montserrat"',
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-}
 const shape = {
   borderRadius: 4
 }
@@ -53,7 +30,6 @@ const theme = createMuiTheme({
     primary,
     secondary,
   },
-  typography,
   shape
 });
 
