@@ -62,7 +62,7 @@ const People = () => {
       <Grid container spacing={3}>
         {people.edges.map(({ node }) => {
           return (
-            <Grid item xs={4}>
+            <Grid key={node.id} item xs={12}>
               <Person key={node.id} node={node}></Person>
             </Grid>
           )
