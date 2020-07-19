@@ -6,20 +6,19 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allWordpressPost(limit: 6) {
+      allWpPost(limit: 6) {
         edges {
           node {
             id
-            path
+            uri
           }
         }
       }
-      allWordpressCategory {
+      allWpCategory {
         edges {
           node {
             id
-            path
-            wordpress_id
+            uri
           }
         }
       }
@@ -30,12 +29,12 @@ exports.createPages = ({ actions, graphql }) => {
       return Promise.reject(result.errors)
     }
 
-    const { allWordpressPost } = result.data
-    const { allWordpressCategory } = result.data
+    const { allWpPost } = result.data
+    const { allWpCategory } = result.data
 
-    allWordpressPost.edges.forEach(({ node }) => {
+    allWpPost.edges.forEach(({ node }) => {
       createPage({
-        path: node.path,
+        path: node.uri,
         component: path.resolve(`src/templates/wordpress-post.js`),
         context: {
           id: node.id,
@@ -43,13 +42,12 @@ exports.createPages = ({ actions, graphql }) => {
       })
     })
 
-    allWordpressCategory.edges.forEach(({ node }) => {
+    allWpCategory.edges.forEach(({ node }) => {
       createPage({
-        path: node.path,
+        path: node.uri,
         component: path.resolve(`src/templates/wordpress-category.js`),
         context: {
           id: node.id,
-          wordpress_id: node.wordpress_id,
         },
       })
     })

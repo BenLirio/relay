@@ -5,12 +5,12 @@ import Posts from "../components/Posts"
 
 const CategoryPage = ({ data }) => {
   const { wordpressCategory } = data
-  const { allWordpressPost } = data
+  const { allWpPost } = data
   return (
     <>
       <Container fixed>
         <Typography variant="h1">{wordpressCategory.name}</Typography>
-        <Posts allWordpressPost={allWordpressPost} />
+        <Posts allWpPost={allWpPost} />
       </Container>
     </>
   )
@@ -19,26 +19,22 @@ const CategoryPage = ({ data }) => {
 export default CategoryPage
 
 export const pageQuery = graphql`
-  query WordpressCategoryByID($id: String!, $wordpress_id: Int!) {
-    wordpressCategory(id: { eq: $id }) {
+  query WordpressCategoryByID($id: String!) {
+    wpCategory(id: { eq: $id }) {
       name
-    }
-    allWordpressPost(
-      filter: {
-        categories: { elemMatch: { wordpress_id: { eq: $wordpress_id } } }
-      }
-    ) {
-      edges {
-        node {
+      posts {
+        nodes {
           title
           id
-          path
+          uri
           excerpt
-          featured_media {
-            localFile {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid_tracedSVG
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid_tracedSVG
+                  }
                 }
               }
             }

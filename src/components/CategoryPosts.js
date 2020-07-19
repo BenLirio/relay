@@ -1,13 +1,13 @@
 import React from "react"
 import { Link } from "gatsby"
 
-const CategoryPosts = ({ allWordpressPost }) => {
+const CategoryPosts = ({ allWpPost }) => {
   return (
     <div>
-      {allWordpressPost.edges.map(({ node }) => {
+      {allWpPost.edges.map(({ node }) => {
         return (
           <div key={node.id}>
-            <Link to={node.path}>{node.title}</Link>
+            <Link to={node.uri}>{node.title}</Link>
           </div>
         )
       })}

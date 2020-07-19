@@ -4,10 +4,10 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
 const Post = ({ node }) => {
-  const fluid = node.featured_media.localFile.childImageSharp.fluid
+  const fluid = node.featuredImage.node.localFile.childImageSharp.fluid
   return (
     <Card style={{ height: '100%' }}>
-      <CardActionArea component={Link} to={node.path} style={{ height: '100%' }}>
+      <CardActionArea component={Link} to={node.uri} style={{ height: '100%' }}>
         <CardHeader title={node.title} />
         <CardMedia component={Img} fluid={fluid}>
         </CardMedia>
@@ -19,8 +19,8 @@ const Post = ({ node }) => {
   )
 }
 
-const PostsGrid = ({ allWordpressPost }) => {
-  const { edges } = allWordpressPost
+const PostsGrid = ({ allWpPost }) => {
+  const { edges } = allWpPost
   return (
     <>
       <Grid container spacing={3} alignItems="stretch">
@@ -35,15 +35,15 @@ const PostsGrid = ({ allWordpressPost }) => {
   )
 }
 
-const PostsList = ({ allWordpressPost }) => {
-  const { edges } = allWordpressPost
+const PostsList = ({ allWpPost }) => {
+  const { edges } = allWpPost
   return (
     <>
       <List>
         {edges.map(({ node }) => {
-          const fluid = node.featured_media.localFile.childImageSharp.fluid
+          const fluid = node.featuredImage.node.localFile.childImageSharp.fluid
           return (
-            <ListItem button key={node.id} component={Link} to={node.path}>
+            <ListItem button key={node.id} component={Link} to={node.uri}>
               <ListItemAvatar>
                 <Avatar component={Img} fluid={fluid} />
               </ListItemAvatar>
@@ -56,11 +56,11 @@ const PostsList = ({ allWordpressPost }) => {
   )
 }
 
-const Posts = ({ allWordpressPost, variant = 'grid' }) => {
+const Posts = ({ allWpPost, variant = 'grid' }) => {
   if (variant === 'grid') {
-    return <PostsGrid allWordpressPost={allWordpressPost} />
+    return <PostsGrid allWpPost={allWpPost} />
   } else {
-    return <PostsList allWordpressPost={allWordpressPost} />
+    return <PostsList allWpPost={allWpPost} />
   }
 }
 

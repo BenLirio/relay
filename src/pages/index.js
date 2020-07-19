@@ -4,7 +4,7 @@ import { Button, Container, Grid, Typography } from "@material-ui/core"
 import Posts from "../components/Posts"
 
 const Relay = ({ data }) => {
-  const { allWordpressPost } = data
+  const { allWpPost } = data
   return (
     <div>
       <FeatureImage image={data.image}>
@@ -16,7 +16,7 @@ const Relay = ({ data }) => {
             <Typography variant="h3">{"Top Stories"}</Typography>
           </Grid>
         </Grid>
-        <Posts allWordpressPost={allWordpressPost} />
+        <Posts allWpPost={allWpPost} />
         <Typography variant="h3">Covid Map</Typography>
         <iframe title="covid-map" src="https://ourworldindata.org/grapher/total-deaths-covid-19?country=ITA+ESP+USA" style={{ width: '100%', height: '600px', border: '0px none' }} ></iframe>
         <Typography variant="h3">How To Help</Typography>
@@ -39,17 +39,19 @@ const Relay = ({ data }) => {
 export default Relay
 export const pageQuery = graphql`
   query RelayQuery {
-    allWordpressPost(limit: 3) {
+    allWpPost(limit: 3) {
       edges {
         node {
           title
           id
-          path
-          featured_media {
-            localFile {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid_tracedSVG
+          uri
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid_tracedSVG
+                  }
                 }
               }
             }

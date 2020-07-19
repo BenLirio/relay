@@ -4,8 +4,8 @@ import FeatureImage from "../../components/FeatureImage"
 import Posts from "../../components/Posts"
 
 const Index = ({ data }) => {
-  const { allWordpressPostArchive } = data
-  const { allWordpressPostRecent } = data
+  const { allWpPostArchive } = data
+  const { allWpPostRecent } = data
   return (
     <>
       <FeatureImage image={data.image}>
@@ -19,13 +19,13 @@ const Index = ({ data }) => {
             <Typography variant="h1">New Posts</Typography>
           </Grid>
           <Grid item xs={12}>
-            <Posts allWordpressPost={allWordpressPostRecent} sizes={[12, 4, 4, 4, 6, 6]} />
+            <Posts allWpPost={allWpPostRecent} sizes={[12, 4, 4, 4, 6, 6]} />
           </Grid>
           <Grid item xs={12}>
             <Typography variant="h1">Archive</Typography>
           </Grid>
           <Grid item xs={12}>
-            <Posts allWordpressPost={allWordpressPostArchive} variant="list" />
+            <Posts allWpPost={allWpPostArchive} variant="list" />
           </Grid>
         </Grid>
       </Container>
@@ -44,17 +44,19 @@ export const pageQuery = graphql`
         }
       }
     }
-    allWordpressPostRecent: allWordpressPost(limit: 6) {
+    allWpPostRecent: allWpPost(limit: 6) {
       edges {
         node {
           title
           id
-          path
-          featured_media {
-            localFile {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid_tracedSVG
+          uri
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid_tracedSVG
+                  }
                 }
               }
             }
@@ -62,18 +64,20 @@ export const pageQuery = graphql`
         }
       }
     }
-    allWordpressPostArchive: allWordpressPost(limit: 20, skip: 6) {
+    allWpPostArchive: allWpPost(limit: 20, skip: 6) {
       edges {
         node {
           title
           id
-          path
+          uri
           date(fromNow: true)
-          featured_media {
-            localFile {
-              childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid_tracedSVG
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  fluid {
+                    ...GatsbyImageSharpFluid_tracedSVG
+                  }
                 }
               }
             }

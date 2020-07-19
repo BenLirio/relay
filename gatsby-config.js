@@ -27,26 +27,10 @@ module.exports = {
       resolve: `gatsby-theme-material-ui`,
     },
     {
-      resolve: "gatsby-source-wordpress",
+      resolve: "gatsby-source-wordpress-experimental",
       options: {
-        baseUrl: "therelayresource.com",
-        protocol: "https",
-        restApiPrefix: "wp-json",
-        useACF: true,
-        auth: {
-          htaccess_user: "web-app",
-          htaccess_pass: "*DWuU(QaTV9&(FKuR91*bHp@",
-          htaccess_sendImmediately: true,
-        },
-        includedRoutes: [
-          "**/categories",
-          "**/posts",
-          "**/media",
-          "**/tags",
-          "**/taxonomies",
-          "**/users",
-        ]
-      },
+        url: `https://therelayresource.com/graphql`
+      }
     },
     {
       resolve: "gatsby-source-google-sheets",

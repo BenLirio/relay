@@ -5,20 +5,20 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 const IGNORED_CATEGORIES = ["Uncategorized", "Caregiving", "Tested Positive"]
 
 const CategoryBar = () => {
-  const { allWordpressCategory } = useStaticQuery(graphql`
+  const { allWpCategory } = useStaticQuery(graphql`
   query CategoryBarQuery {
-    allWordpressCategory {
+    allWpCategory {
       edges {
         node {
           name
           id
-          path
+          uri
         }
       }
     }
   }
   `)
-  const { edges } = allWordpressCategory
+  const { edges } = allWpCategory
   const filteredEdges = [...edges].filter(
     ({ node }) => !IGNORED_CATEGORIES.includes(node.name)
   )
@@ -31,7 +31,7 @@ const CategoryBar = () => {
               color="inherit"
               key={node.id}
               component={Link}
-              to={node.path}
+              to={node.uri}
             >
               {node.name}
             </Button>
