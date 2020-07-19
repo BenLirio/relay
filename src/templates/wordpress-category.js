@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import CategoryPosts from "../components/CategoryPosts"
 import { Typography, Container } from "@material-ui/core"
 import Posts from "../components/Posts"
 

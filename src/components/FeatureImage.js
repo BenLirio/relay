@@ -1,6 +1,6 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import { Box, createStyles, makeStyles, Typography } from '@material-ui/core'
+import { Box, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
   root: {

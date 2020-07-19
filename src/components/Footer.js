@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 
 const FooterSection = ({ children }) => {
   return (
-    <Grid item xs={4}>
+    <Grid item xs={12}>
       <Grid container alignItems="center" direction="column">{children}</Grid>
     </Grid>
   )

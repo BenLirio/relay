@@ -1,8 +1,6 @@
 import React from "react"
 import FeatureImage from "../components/FeatureImage"
-import CategoryBar from "../components/CategoryBar"
 import { Button, Container, Grid, Typography } from "@material-ui/core"
-import OutlinedButton from "../components/OutlinedButton"
 import Posts from "../components/Posts"
 
 const Relay = ({ data }) => {
@@ -15,22 +13,22 @@ const Relay = ({ data }) => {
       <Container fixed>
         <Grid container>
           <Grid item xs={12}>
-            <Typography variant="h2">{"Top Stories"}</Typography>
+            <Typography variant="h3">{"Top Stories"}</Typography>
           </Grid>
         </Grid>
         <Posts allWordpressPost={allWordpressPost} />
-        <Typography variant="h2">Covid Map</Typography>
-        <iframe src="https://ourworldindata.org/grapher/total-deaths-covid-19?country=ITA+ESP+USA" style={{ width: '100%', height: '600px', border: '0px none' }} ></iframe>
-        <Typography variant="h2">How To Help</Typography>
-        <Grid container alignItems="center">
-          <Grid item xs={3}>
-            <OutlinedButton text="How to Help"></OutlinedButton>
+        <Typography variant="h3">Covid Map</Typography>
+        <iframe title="covid-map" src="https://ourworldindata.org/grapher/total-deaths-covid-19?country=ITA+ESP+USA" style={{ width: '100%', height: '600px', border: '0px none' }} ></iframe>
+        <Typography variant="h3">How To Help</Typography>
+        <Grid container>
+          <Grid item xs={12}>
+            <Button>How to help</Button>
           </Grid>
-          <Grid item xs={3}>
-            <OutlinedButton text="How to Donate"></OutlinedButton>
+          <Grid item xs={12}>
+            <Button>How to donate</Button>
           </Grid>
-          <Grid item xs={3}>
-            <OutlinedButton text="How to Volunteer"></OutlinedButton>
+          <Grid item xs={12}>
+            <Button>How to Volunteer</Button>
           </Grid>
         </Grid>
       </Container>

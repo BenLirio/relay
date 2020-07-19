@@ -1,6 +1,5 @@
 import React from "react"
 import { Typography, Container, Grid } from "@material-ui/core"
-import CategoryBar from "../../components/CategoryBar"
 import FeatureImage from "../../components/FeatureImage"
 import Posts from "../../components/Posts"
 

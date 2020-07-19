@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import People from "../../components/People"
 import { Typography, Grid, Container, AppBar, Tabs, Tab } from "@material-ui/core"
 import FeatureImage from "../../components/FeatureImage"

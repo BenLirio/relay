@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import { Card, CardHeader, Grid, CardContent, Typography, Avatar, CardActionArea, Button, CardActions } from '@material-ui/core'
+import { Card, CardHeader, Grid, CardContent, Typography, Avatar, Button, CardActions } from '@material-ui/core'
 
 class PersonData {
   constructor(node) {
