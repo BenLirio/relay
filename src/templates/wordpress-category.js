@@ -4,13 +4,12 @@ import { Typography, Container } from "@material-ui/core"
 import Posts from "../components/Posts"
 
 const CategoryPage = ({ data }) => {
-  const { wordpressCategory } = data
-  const { allWpPost } = data
+  const { wpCategory } = data
   return (
     <>
       <Container fixed>
-        <Typography variant="h1">{wordpressCategory.name}</Typography>
-        <Posts allWpPost={allWpPost} />
+        <Typography variant="h1">{wpCategory.name}</Typography>
+        <Posts nodes={wpCategory.posts.nodes} />
       </Container>
     </>
   )

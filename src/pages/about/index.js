@@ -3,6 +3,7 @@ import People from "../../components/People"
 import { Typography, Grid, Container, AppBar, Tabs, Tab } from "@material-ui/core"
 import FeatureImage from "../../components/FeatureImage"
 import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 
 const OurMission = ({ contentImage }) => {
   return (

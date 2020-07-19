@@ -19,12 +19,11 @@ const Post = ({ node }) => {
   )
 }
 
-const PostsGrid = ({ allWpPost }) => {
-  const { edges } = allWpPost
+const PostsGrid = ({ nodes }) => {
   return (
     <>
       <Grid container spacing={3} alignItems="stretch">
-        {edges.map(({ node }, i) => {
+        {nodes.map((node) => {
           return (
             <Grid item key={node.id} xs={12}>
               <Post node={node} />
@@ -35,12 +34,11 @@ const PostsGrid = ({ allWpPost }) => {
   )
 }
 
-const PostsList = ({ allWpPost }) => {
-  const { edges } = allWpPost
+const PostsList = ({ nodes }) => {
   return (
     <>
       <List>
-        {edges.map(({ node }) => {
+        {nodes.map((node) => {
           const fluid = node.featuredImage.node.localFile.childImageSharp.fluid
           return (
             <ListItem button key={node.id} component={Link} to={node.uri}>
@@ -56,11 +54,11 @@ const PostsList = ({ allWpPost }) => {
   )
 }
 
-const Posts = ({ allWpPost, variant = 'grid' }) => {
+const Posts = ({ nodes, variant = 'grid' }) => {
   if (variant === 'grid') {
-    return <PostsGrid allWpPost={allWpPost} />
+    return <PostsGrid nodes={nodes} />
   } else {
-    return <PostsList allWpPost={allWpPost} />
+    return <PostsList nodes={nodes} />
   }
 }
 

@@ -2,6 +2,7 @@ import React from "react"
 import { Typography, Container, Grid } from "@material-ui/core"
 import FeatureImage from "../../components/FeatureImage"
 import Posts from "../../components/Posts"
+import { graphql } from 'gatsby'
 
 const Index = ({ data }) => {
   const { allWpPostArchive } = data
@@ -19,13 +20,13 @@ const Index = ({ data }) => {
             <Typography variant="h1">New Posts</Typography>
           </Grid>
           <Grid item xs={12}>
-            <Posts allWpPost={allWpPostRecent} sizes={[12, 4, 4, 4, 6, 6]} />
+            <Posts nodes={allWpPostRecent.nodes} />
           </Grid>
           <Grid item xs={12}>
             <Typography variant="h1">Archive</Typography>
           </Grid>
           <Grid item xs={12}>
-            <Posts allWpPost={allWpPostArchive} variant="list" />
+            <Posts nodes={allWpPostArchive.nodes} variant="list" />
           </Grid>
         </Grid>
       </Container>
@@ -45,18 +46,16 @@ export const pageQuery = graphql`
       }
     }
     allWpPostRecent: allWpPost(limit: 6) {
-      edges {
-        node {
-          title
-          id
-          uri
-          featuredImage {
-            node {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid_tracedSVG
-                  }
+      nodes {
+        title
+        id
+        uri
+        featuredImage {
+          node {
+            localFile {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid_tracedSVG
                 }
               }
             }
@@ -65,19 +64,17 @@ export const pageQuery = graphql`
       }
     }
     allWpPostArchive: allWpPost(limit: 20, skip: 6) {
-      edges {
-        node {
-          title
-          id
-          uri
-          date(fromNow: true)
-          featuredImage {
-            node {
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid_tracedSVG
-                  }
+      nodes {
+        title
+        id
+        uri
+        date(fromNow: true)
+        featuredImage {
+          node {
+            localFile {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid_tracedSVG
                 }
               }
             }
