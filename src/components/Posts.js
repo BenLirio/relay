@@ -25,7 +25,7 @@ const PostsGrid = ({ nodes }) => {
       <Grid container spacing={3} alignItems="stretch">
         {nodes.map((node) => {
           return (
-            <Grid item key={node.id} xs={12}>
+            <Grid item key={node.id} xs={12} md={4}>
               <Post node={node} />
             </Grid>)
         })}

@@ -3,7 +3,6 @@ import FeatureImage from "../components/FeatureImage"
 import { Button, Container, Grid, Typography } from "@material-ui/core"
 import Posts from "../components/Posts"
 import { graphql } from 'gatsby'
-import CategoryBar from "../components/CategoryBar"
 import CategoryList from "../components/CategoryList"
 
 const Relay = ({ data }) => {
