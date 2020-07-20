@@ -1,0 +1,10 @@
+steps:
+  - name: node:10.15.1
+    entrypoint: yarn
+    args: ["install"]
+  - name: node:10.15.1
+    entrypoint: yarn
+    args: ["build"]
+  - name: "node:10.15.1"
+    entrypoint: "./node_modules/.bin/firebase"
+    args: ["deploy"]
