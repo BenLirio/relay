@@ -46,15 +46,10 @@
   "main": "n/a",
   "scripts": {
     "clean": "gatsby clean",
-    "start": "gatsby develop",
-    "serve": "npm run serve",
-    "build": "gatsby build",
+    "start": "npm run develop",
+    "serve": "gatsby clean && gatsby build && gatsby serve",
     "develop": "npm run clean && gatsby develop",
-    "deploy": "firebase deploy",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "keys": "gsutil cp gs://relay-resource-private/relay-cms-key.json ./keys/relay-cms-key.json",
-    "gsutil-download": "sh bin/gsutil-download.sh"
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\""
   },
   "devDependencies": {
     "prettier": "^2.0.5"

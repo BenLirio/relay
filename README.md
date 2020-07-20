@@ -92,12 +92,6 @@ Recommendation focus more on React concepts rather than how gatsby actually work
 
 ## Deploy
 
-Deployment is using firebase, you will have to install dependencies for that.
+Continuous integration has been set up in order to deploy create a pull request to master.
 
-Once you are ready use:
-
-```shell
-$ firebase deploy
-```
-
-May have to alter some permissions to get this to work
+you may want to run `npm run serve` to make sure everything is working properly
