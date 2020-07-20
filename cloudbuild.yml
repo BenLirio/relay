@@ -4,6 +4,9 @@ steps:
     args: ["install"]
   - name: node:10.15.1
     entrypoint: yarn
+    args: ["gsutil-download"]
+  - name: node:10.15.1
+    entrypoint: yarn
     args: ["keys"]
   - name: node:10.15.1
     entrypoint: yarn
