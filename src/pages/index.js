@@ -20,7 +20,7 @@ const Relay = ({ data }) => {
         </Grid>
         <Posts nodes={allWpPost.nodes} />
         <CategoryList />
-        <Typography variant="h3">Covid Map</Typography>
+        <Typography variant="h3">Covid Map-Hi</Typography>
         <iframe
           title="covid-map"
           src="https://ourworldindata.org/grapher/total-deaths-covid-19?country=ITA+ESP+USA"
