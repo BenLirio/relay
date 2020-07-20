@@ -4,7 +4,7 @@ steps:
     args:
       [
         "-c",
-        "gcloud secrets versions access latest --secret=relay-cms --format='get(payload.data)' | tr '_-' '/+' | base64 -d > relay-cms-key.json",
+        "gcloud secrets versions access latest --secret=projects/653147431145/secrets/relay-cms/versions/1 --format='get(payload.data)' | tr '_-' '/+' | base64 -d > relay-cms-key.json",
       ]
   - name: node:10.15.1
     entrypoint: yarn
