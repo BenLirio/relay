@@ -2,15 +2,15 @@ import React from 'react'
 import { Typography, Container, Grid } from '@material-ui/core'
 import FeatureImage from '../../components/FeatureImage'
 import Img from 'gatsby-image'
-
+import { graphql } from 'gatsby'
 
 const HowToHelp = ({ data }) => {
-  console.log('data', data)
-
   return (
     <>
       <FeatureImage image={data.image}>
-        <Typography variant="h1" color="primary">How To Help</Typography>
+        <Typography variant="h1" color="primary">
+          How To Help
+        </Typography>
       </FeatureImage>
 
       <Container fixed>
@@ -42,7 +42,7 @@ const HowToHelp = ({ data }) => {
 export default HowToHelp
 export const howToHelpQuery = graphql`
   query howToHelpQuery {
-   image: file(relativePath: { eq: "feature-tips.jpg" }) {
+    image: file(relativePath: { eq: "feature-tips.jpg" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid
@@ -51,4 +51,3 @@ export const howToHelpQuery = graphql`
     }
   }
 `
-

@@ -10,8 +10,7 @@ import {
 } from "@material-ui/core"
 import FeatureImage from "../../components/FeatureImage"
 import Img from "gatsby-image"
-
-//Just a test comment
+import { graphql } from "gatsby"
 
 const OurMission = ({ contentImage }) => {
   return (
@@ -45,8 +44,10 @@ const OurTeam = () => {
   )
 }
 
-export const AboutPage = ({ data }) => {
-  const [value, setValue] = useState(0)
+export const AboutPage = ({ data, location }) => {
+  const [value, setValue] = useState(
+    (location && location.state && location.state.page) || 0
+  )
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }

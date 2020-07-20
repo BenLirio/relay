@@ -1,12 +1,12 @@
-import React from "react"
-import { Typography, Container, Grid } from "@material-ui/core"
-import CategoryBar from "../../components/CategoryBar"
-import FeatureImage from "../../components/FeatureImage"
-import Posts from "../../components/Posts"
+import React from 'react'
+import { Typography, Container, Grid } from '@material-ui/core'
+import FeatureImage from '../../components/FeatureImage'
+import Posts from '../../components/Posts'
+import { graphql } from 'gatsby'
 
 const Index = ({ data }) => {
-  const { allWordpressPostArchive } = data
-  const { allWordpressPostRecent } = data
+  const { allWpPostArchive } = data
+  const { allWpPostRecent } = data
   return (
     <>
       <FeatureImage image={data.image}>
@@ -14,20 +14,19 @@ const Index = ({ data }) => {
           Feature Image
         </Typography>
       </FeatureImage>
-      <CategoryBar />
       <Container fixed>
         <Grid container>
           <Grid item xs={12}>
             <Typography variant="h1">New Posts</Typography>
           </Grid>
           <Grid item xs={12}>
-            <Posts allWordpressPost={allWordpressPostRecent} sizes={[12, 4, 4, 4, 6, 6]} />
+            <Posts nodes={allWpPostRecent.nodes} />
           </Grid>
           <Grid item xs={12}>
             <Typography variant="h1">Archive</Typography>
           </Grid>
           <Grid item xs={12}>
-            <Posts allWordpressPost={allWordpressPostArchive} variant="list" />
+            <Posts nodes={allWpPostArchive.nodes} variant="list" />
           </Grid>
         </Grid>
       </Container>
@@ -46,13 +45,13 @@ export const pageQuery = graphql`
         }
       }
     }
-    allWordpressPostRecent: allWordpressPost(limit: 6) {
-      edges {
-        node {
-          title
-          id
-          path
-          featured_media {
+    allWpPostRecent: allWpPost(limit: 6) {
+      nodes {
+        title
+        id
+        uri
+        featuredImage {
+          node {
             localFile {
               childImageSharp {
                 fluid {
@@ -64,14 +63,14 @@ export const pageQuery = graphql`
         }
       }
     }
-    allWordpressPostArchive: allWordpressPost(limit: 20, skip: 6) {
-      edges {
-        node {
-          title
-          id
-          path
-          date(fromNow: true)
-          featured_media {
+    allWpPostArchive: allWpPost(limit: 20, skip: 6) {
+      nodes {
+        title
+        id
+        uri
+        date(fromNow: true)
+        featuredImage {
+          node {
             localFile {
               childImageSharp {
                 fluid {

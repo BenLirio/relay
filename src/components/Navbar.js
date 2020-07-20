@@ -7,10 +7,15 @@ const Navbar = () => {
     <>
       <AppBar>
         <Toolbar>
-          <Button color="inherit" component={Link} to="/">Relay</Button>
-          <Button color="inherit" component={Link} to="/about">About</Button>
-          <Button color="inherit" component={Link} to="/how-to-help">How To Help</Button>
-          <Button color="inherit" component={Link} to="/blog">Tips & Advice</Button>
+          <Button color="inherit" component={Link} to="/">
+            Relay
+          </Button>
+          <Button color="inherit" component={Link} to="/about">
+            About
+          </Button>
+          <Button color="inherit" component={Link} to="/how-to-help">
+            How To Help
+          </Button>
         </Toolbar>
       </AppBar>
       <Toolbar />
