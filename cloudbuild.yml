@@ -3,7 +3,7 @@ steps:
     entrypoint: yarn
     args: ["install"]
   - name: gcr.io/cloud-builders/gcloud
-    entrypoint: gcloud
+    entrypoint: gsutil
     args:
       [
         "cp",
