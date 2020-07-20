@@ -1,7 +1,7 @@
-import React from "react"
-import { Typography, Container, Grid } from "@material-ui/core"
-import FeatureImage from "../../components/FeatureImage"
-import Posts from "../../components/Posts"
+import React from 'react'
+import { Typography, Container, Grid } from '@material-ui/core'
+import FeatureImage from '../../components/FeatureImage'
+import Posts from '../../components/Posts'
 import { graphql } from 'gatsby'
 
 const Index = ({ data }) => {

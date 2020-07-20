@@ -51,7 +51,8 @@
     "build": "gatsby build",
     "develop": "npm run clean && gatsby develop",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "keys": "gsutil cp gs://relay-resource-private/relay-cms-key.json ./keys/relay-cms-key.json"
   },
   "devDependencies": {
     "prettier": "^2.0.5"

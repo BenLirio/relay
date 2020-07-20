@@ -7,15 +7,15 @@ const useStyles = makeStyles({
     height: 400,
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   image: {
     height: '100%',
-    width: '100%'
+    width: '100%',
   },
   caption: {
     position: 'absolute',
-  }
+  },
 })
 
 const FeatureImage = ({ image, children }) => {
@@ -24,9 +24,7 @@ const FeatureImage = ({ image, children }) => {
   return (
     <div className={classes.root}>
       <Box className={classes.image} component={Img} fluid={fluid}></Box>
-      <Box className={classes.caption}>
-        {children}
-      </Box>
+      <Box className={classes.caption}>{children}</Box>
     </div>
   )
 }

@@ -1,22 +1,22 @@
-import React from "react"
-import { Toolbar, Button, AppBar } from "@material-ui/core"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import React from 'react'
+import { Toolbar, Button, AppBar } from '@material-ui/core'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 
-const IGNORED_CATEGORIES = ["Uncategorized", "Caregiving", "Tested Positive"]
+const IGNORED_CATEGORIES = ['Uncategorized', 'Caregiving', 'Tested Positive']
 
 const CategoryBar = () => {
   const { allWpCategory } = useStaticQuery(graphql`
-  query CategoryBarQuery {
-    allWpCategory {
-      edges {
-        node {
-          name
-          id
-          uri
+    query CategoryBarQuery {
+      allWpCategory {
+        edges {
+          node {
+            name
+            id
+            uri
+          }
         }
       }
     }
-  }
   `)
   const { edges } = allWpCategory
   const filteredEdges = [...edges].filter(
