@@ -69,4 +69,4 @@ yarn-error.log
 .yarn-integrity
 
 # private keys
-keys
+keys/relay-cms-key.json
