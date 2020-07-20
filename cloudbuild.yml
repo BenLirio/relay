@@ -2,12 +2,14 @@ steps:
   - name: node:10.15.1
     entrypoint: yarn
     args: ["install"]
-  - name: node:10.15.1
-    entrypoint: yarn
-    args: ["gsutil-download"]
-  - name: node:10.15.1
-    entrypoint: yarn
-    args: ["keys"]
+  - name: gcr.io/cloud-builders/gcloud
+    entrypoint: gcloud
+    args:
+      [
+        "cp",
+        "gs://relay-resource-private/relay-cms-key.json",
+        "./keys/relay-cms-key.json",
+      ]
   - name: node:10.15.1
     entrypoint: yarn
     args: ["build"]
