@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import People from '../../components/People'
+import React, { useState } from "react"
+import People from "../../components/People"
 import {
   Typography,
   Grid,
@@ -7,10 +7,10 @@ import {
   AppBar,
   Tabs,
   Tab,
-} from '@material-ui/core'
-import FeatureImage from '../../components/FeatureImage'
-import Img from 'gatsby-image'
-import { graphql } from 'gatsby'
+} from "@material-ui/core"
+import FeatureImage from "../../components/FeatureImage"
+import Img from "gatsby-image"
+import { graphql } from "gatsby"
 
 const OurMission = ({ contentImage }) => {
   return (
@@ -24,7 +24,7 @@ const OurMission = ({ contentImage }) => {
           this difficult time. We have partnered with professionals around the
           country to help provide reliable sources and information. This summer,
           we decided to launch Relay, a resource to help families dealing with
-          COVID-19.{' '}
+          COVID-19.{" "}
         </Typography>
       </Grid>
       <Grid item xs={12}>
