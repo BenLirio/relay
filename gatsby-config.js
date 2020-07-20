@@ -7,7 +7,7 @@ module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
     {
-      // keep as first gatsby-source-filesystem plugin for gatsby image support
+      // keep as first gatsby-source-filesystem plugin for gatsby image support.
       resolve: "gatsby-source-filesystem",
       options: {
         path: `${__dirname}/static/img`,
@@ -29,8 +29,8 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress-experimental",
       options: {
-        url: `https://therelayresource.com/graphql`
-      }
+        url: `https://therelayresource.com/graphql`,
+      },
     },
     {
       resolve: "gatsby-source-google-sheets",

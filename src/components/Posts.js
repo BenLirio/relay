@@ -1,5 +1,18 @@
 import React from 'react'
-import { Card, CardHeader, Typography, CardContent, CardMedia, Grid, CardActionArea, List, ListItem, ListItemText, ListItemAvatar, Avatar } from '@material-ui/core'
+import {
+  Card,
+  CardHeader,
+  Typography,
+  CardContent,
+  CardMedia,
+  Grid,
+  CardActionArea,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemAvatar,
+  Avatar,
+} from '@material-ui/core'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
@@ -9,8 +22,7 @@ const Post = ({ node }) => {
     <Card style={{ height: '100%' }}>
       <CardActionArea component={Link} to={node.uri} style={{ height: '100%' }}>
         <CardHeader title={node.title} />
-        <CardMedia component={Img} fluid={fluid}>
-        </CardMedia>
+        <CardMedia component={Img} fluid={fluid}></CardMedia>
         <CardContent>
           <Typography variant="body1">{node.excerpt}</Typography>
         </CardContent>
@@ -23,11 +35,12 @@ const PostsGrid = ({ nodes }) => {
   return (
     <>
       <Grid container spacing={3} alignItems="stretch">
-        {nodes.map((node) => {
+        {nodes.map(node => {
           return (
             <Grid item key={node.id} xs={12} md={4}>
               <Post node={node} />
-            </Grid>)
+            </Grid>
+          )
         })}
       </Grid>
     </>
@@ -38,7 +51,7 @@ const PostsList = ({ nodes }) => {
   return (
     <>
       <List>
-        {nodes.map((node) => {
+        {nodes.map(node => {
           const fluid = node.featuredImage.node.localFile.childImageSharp.fluid
           return (
             <ListItem button key={node.id} component={Link} to={node.uri}>
