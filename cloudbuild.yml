@@ -12,6 +12,5 @@ steps:
   - name: node:10.15.1
     entrypoint: yarn
     args: ["build"]
-  - name: "node:10.15.1"
-    entrypoint: "firebase"
-    args: ["deploy"]
+  - name: gcr.io/project-id/firebase
+    args: ["deploy", "--project=relay-resource", "--only=hosting"]
