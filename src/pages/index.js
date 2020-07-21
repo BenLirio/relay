@@ -1,16 +1,9 @@
 import React from "react"
 import FeatureImage from "../components/FeatureImage"
-<<<<<<< HEAD
 import { Button, Container, Grid, Typography, Divider, Card, CardHeader, CardMedia, Box } from "@material-ui/core"
 import { graphql } from 'gatsby'
 import CategoryBar from "../components/CategoryBar"
 import Img from 'gatsby-image'
-=======
-import { Button, Container, Grid, Typography } from "@material-ui/core"
-import Posts from "../components/Posts"
-import { graphql } from "gatsby"
-import CategoryList from "../components/CategoryList"
->>>>>>> 1b5ce7607db2e851a39032934e1d5ec736c49a70
 
 const Relay = ({ data }) => {
   const { allWpPost } = data

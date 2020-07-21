@@ -31,6 +31,7 @@ const CategoryBar = () => {
         name
       }
     }
+  }
   `)
   const categories = allWpCategory.nodes.map(node => {
     const name = names.get(node.id) || null
