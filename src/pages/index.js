@@ -4,6 +4,7 @@ import { Button, Container, Grid, Typography, Divider, Card, CardHeader, CardMed
 import { graphql } from 'gatsby'
 import CategoryBar from "../components/CategoryBar"
 import Img from 'gatsby-image'
+import Post from "../components/shared/Post"
 
 const Relay = ({ data }) => {
   const { allWpPost } = data
@@ -26,9 +27,7 @@ const Relay = ({ data }) => {
           <Grid item xs={12} container spacing={3}>
             <Grid item xs={9} container spacing={3}>
               <Grid item xs={5}>
-                <Typography variant="h5">{firstPost.title}</Typography>
-                <Img fluid={firstPost.featuredImage.node.localFile.childImageSharp.fluid}></Img>
-                <Typography variant="body2" color="textSecondary"><span dangerouslySetInnerHTML={{ __html: allWpPost.nodes[0].excerpt }}></span></Typography>
+                <Post post={allWpPost.nodes[0]} image="mid" />
               </Grid>
               <Grid item xs={7}>
                 <iframe title="covid-map" src="https://ourworldindata.org/grapher/total-deaths-covid-19?country=ITA+ESP+USA" style={{ width: '100%', height: '600px', border: '0px none' }} ></iframe>
@@ -37,13 +36,11 @@ const Relay = ({ data }) => {
             <Divider orientation="vertical" style={{ width: '1px' }} flexItem />
             <Grid item xs={3} container direction="column">
               <Grid item>
-                <Typography variant="h6">{allWpPost.nodes[1].title}</Typography>
-                <Typography variant="body2" color="textSecondary"><span dangerouslySetInnerHTML={{ __html: allWpPost.nodes[1].excerpt }}></span></Typography>
+                <Post post={allWpPost.nodes[1]} />
               </Grid>
               <Divider flexItem style={{ width: '100%', height: '1px' }} />
               <Grid item>
-                <Typography variant="h6">{allWpPost.nodes[2].title}</Typography>
-                <Typography variant="body2" color="textSecondary"><span dangerouslySetInnerHTML={{ __html: allWpPost.nodes[2].excerpt }}></span></Typography>
+                <Post post={allWpPost.nodes[2]} />
               </Grid>
             </Grid>
           </Grid>
@@ -80,13 +77,7 @@ const Relay = ({ data }) => {
           <Divider style={{ width: '100%', height: '1px', marginTop: '8px', marginBottom: '8px' }} flexItem />
           <Grid item xs={12} container spacing={3}>
             <Grid item xs={8} container spacing={3}>
-              <Grid item xs={6}>
-                <Typography variant="h5">{allWpPost.nodes[3].title}</Typography>
-                <Typography variant="body2" color="textSecondary"><span dangerouslySetInnerHTML={{ __html: allWpPost.nodes[3].excerpt }}></span></Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Img fluid={allWpPost.nodes[3].featuredImage.node.localFile.childImageSharp.fluid}></Img>
-              </Grid>
+              <Post post={allWpPost.nodes[3]} />
             </Grid>
             <Divider orientation="vertical" style={{ width: '1px' }} flexItem />
             <Grid item xs>
@@ -98,12 +89,10 @@ const Relay = ({ data }) => {
           <Divider style={{ width: '100%', height: '1px', marginBottom: '2px', marginTop: '8px' }} flexItem />
           <Divider style={{ width: '100%', height: '1px', marginBottom: '8px' }} flexItem />
           <Grid container item xs={12} spacing={3} justify="space-between">
-            {otherPosts.map(({ id, title, featuredImage, excerpt }) => {
+            {otherPosts.map((post) => {
               return (
-                <Grid key={id} item xs>
-                  <Img fluid={featuredImage.node.localFile.childImageSharp.fluid}></Img>
-                  <Typography variant={"h6"}>{title}</Typography>
-                  <Typography variant="body2" color="textSecondary"><span dangerouslySetInnerHTML={{ __html: excerpt }}></span></Typography>
+                <Grid key={post.id} item xs>
+                  <Post post={post} image="top" />
                 </Grid>
               )
             })}
@@ -128,6 +117,7 @@ export const pageQuery = graphql`
             localFile {
               childImageSharp {
                 fluid {
+                  aspectRatio
                   ...GatsbyImageSharpFluid_tracedSVG
                 }
               }
