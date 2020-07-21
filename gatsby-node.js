@@ -6,7 +6,7 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allWpPost(limit: 6) {
+      allWpPost(limit: 50) {
         edges {
           node {
             id

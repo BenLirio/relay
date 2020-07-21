@@ -17,17 +17,17 @@ const CategoryPage = ({ data }) => {
         </Grid>
         <Divider style={{ width: '100%', height: '2px', background: '#333333' }} />
         <Grid item xs={8}>
-          <Post post={posts[0]} image="mid" />
+          {posts[0] ? <Post post={posts[0]} image="mid" /> : null}
           <Divider style={{ width: '100%', height: '1px' }} />
-          <Post post={posts[1]} />
+          {posts[1] ? <Post post={posts[1]} /> : null}
         </Grid>
         <Divider orientation="vertical" style={{ width: '1px' }} flexItem />
         <Grid item xs>
-          <Post post={posts[2]} />
+          {posts[2] ? <Post post={posts[2]} /> : null}
           <Divider style={{ width: '100%', height: '1px' }} />
-          <Post post={posts[3]} />
+          {posts[3] ? <Post post={posts[3]} /> : null}
           <Divider style={{ width: '100%', height: '1px' }} />
-          <Post post={posts[4]} />
+          {posts[4] ? <Post post={posts[4]} /> : null}
         </Grid>
         <Divider style={{ width: '100%', height: '1px', marginBottom: '2px', marginTop: '4px' }} />
         <Divider style={{ width: '100%', height: '1px' }} />
