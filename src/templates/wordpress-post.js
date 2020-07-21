@@ -1,12 +1,14 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { Typography } from "@material-ui/core"
+import React from 'react'
+import { graphql } from 'gatsby'
+import { Typography } from '@material-ui/core'
 
 const BlogPost = ({ data }) => {
   const { wpPost } = data
-  return <>
-    <Typography variant="h1">{wpPost.title}</Typography>
-  </>
+  return (
+    <>
+      <Typography variant="h1">{wpPost.title}</Typography>
+    </>
+  )
 }
 
 export default BlogPost

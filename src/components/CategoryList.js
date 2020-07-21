@@ -3,7 +3,6 @@ import { List, ListItem, ListItemText, ListSubheader } from '@material-ui/core'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
 const CategoryList = () => {
-
   const { allWpCategory } = useStaticQuery(graphql`
     query {
       allWpCategory {
@@ -16,12 +15,8 @@ const CategoryList = () => {
     }
   `)
   return (
-    <List subheader={
-      <ListSubheader>
-        Categories
-      </ListSubheader>
-    }>
-      {allWpCategory.nodes.map((node) => {
+    <List subheader={<ListSubheader>Categories</ListSubheader>}>
+      {allWpCategory.nodes.map(node => {
         return (
           <ListItem component={Link} to={node.uri} key={node.id} button>
             <ListItemText primary={node.name} />

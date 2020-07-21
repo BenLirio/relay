@@ -29,8 +29,8 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress-experimental",
       options: {
-        url: `https://therelayresource.com/graphql`
-      }
+        url: `https://therelayresource.com/graphql`,
+      },
     },
     {
       resolve: "gatsby-source-google-sheets",

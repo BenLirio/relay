@@ -1,7 +1,7 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { Typography, Container } from "@material-ui/core"
-import Posts from "../components/Posts"
+import React from 'react'
+import { graphql } from 'gatsby'
+import { Typography, Container } from '@material-ui/core'
+import Posts from '../components/Posts'
 
 const CategoryPage = ({ data }) => {
   const { wpCategory } = data

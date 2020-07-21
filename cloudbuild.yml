@@ -1,0 +1,19 @@
+steps:
+  - name: node:10.15.1
+    entrypoint: sh
+    args: ["bin/keys-dir.sh"]
+  - name: gcr.io/cloud-builders/gcloud
+    entrypoint: "bash"
+    args:
+      [
+        "-c",
+        "gcloud secrets versions access latest --secret=relay-cms --format='get(payload.data)' | tr '_-' '/+' | base64 -d > ./keys/relay-cms-key.json",
+      ]
+  - name: node:10.15.1
+    entrypoint: yarn
+    args: ["install"]
+  - name: node:10.15.1
+    entrypoint: yarn
+    args: ["build"]
+  - name: gcr.io/relay-resource/firebase
+    args: ["deploy", "--project=relay-resource", "--only=hosting"]

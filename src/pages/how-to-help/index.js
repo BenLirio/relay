@@ -4,12 +4,13 @@ import FeatureImage from '../../components/FeatureImage'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
 
-
 const HowToHelp = ({ data }) => {
   return (
     <>
       <FeatureImage image={data.image}>
-        <Typography variant="h1" color="primary">How To Help</Typography>
+        <Typography variant="h1" color="primary">
+          How To Help
+        </Typography>
       </FeatureImage>
 
       <Container fixed>
@@ -41,7 +42,7 @@ const HowToHelp = ({ data }) => {
 export default HowToHelp
 export const howToHelpQuery = graphql`
   query howToHelpQuery {
-   image: file(relativePath: { eq: "feature-tips.jpg" }) {
+    image: file(relativePath: { eq: "feature-tips.jpg" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid
@@ -50,4 +51,3 @@ export const howToHelpQuery = graphql`
     }
   }
 `
-

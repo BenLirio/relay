@@ -1,9 +1,16 @@
 import React, { useState } from "react"
 import People from "../../components/People"
-import { Typography, Grid, Container, AppBar, Tabs, Tab } from "@material-ui/core"
+import {
+  Typography,
+  Grid,
+  Container,
+  AppBar,
+  Tabs,
+  Tab,
+} from "@material-ui/core"
 import FeatureImage from "../../components/FeatureImage"
-import Img from 'gatsby-image'
-import { graphql } from 'gatsby'
+import Img from "gatsby-image"
+import { graphql } from "gatsby"
 
 const OurMission = ({ contentImage }) => {
   return (
@@ -12,7 +19,13 @@ const OurMission = ({ contentImage }) => {
         <Typography variant="h2">Our Mission</Typography>
       </Grid>
       <Grid item xs={6}>
-        <Typography variant="body1">We are a group of students hoping to educate and inform people during this difficult time. We have partnered with professionals around the country to help provide reliable sources and information. This summer, we decided to launch Relay, a resource to help families dealing with COVID-19.  </Typography>
+        <Typography variant="body1">
+          We are a group of students hoping to educate and inform people during
+          this difficult time. We have partnered with professionals around the
+          country to help provide reliable sources and information. This summer,
+          we decided to launch Relay, a resource to help families dealing with
+          COVID-19.{" "}
+        </Typography>
       </Grid>
       <Grid item xs={12}>
         <Img fluid={contentImage.childImageSharp.fluid}></Img>
@@ -32,7 +45,9 @@ const OurTeam = () => {
 }
 
 export const AboutPage = ({ data, location }) => {
-  const [value, setValue] = useState(((location && location.state) && location.state.page) || 0)
+  const [value, setValue] = useState(
+    (location && location.state && location.state.page) || 0
+  )
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
@@ -50,7 +65,11 @@ export const AboutPage = ({ data, location }) => {
       </AppBar>
       <Container fixed>
         <Grid container>
-          {value === 0 ? <OurMission contentImage={contentImage} /> : <OurTeam />}
+          {value === 0 ? (
+            <OurMission contentImage={contentImage} />
+          ) : (
+            <OurTeam />
+          )}
         </Grid>
       </Container>
     </>
