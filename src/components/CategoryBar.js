@@ -1,6 +1,7 @@
 import React from "react"
-import { Toolbar, Button, AppBar, Grid, Typography } from "@material-ui/core"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { Toolbar, Button, AppBar, Grid, Typography, ButtonBase } from "@material-ui/core"
+import { Link } from 'gatsby-theme-material-ui'
+import { useStaticQuery, graphql } from "gatsby"
 
 const names = new Map()
 names.set('dGVybToxMDE2', 'Caregiving')
@@ -14,10 +15,15 @@ names.set('dGVybToxOA==', 'Tested Positive')
 names.set('dGVybToxOQ==', 'Advice')
 
 
-const Category = ({ id, name }) => {
+const Category = (category) => {
+
   return (
     <Grid item>
-      <Button>{name}</Button>
+      <ButtonBase>
+        <Typography variant="subtitle1">
+          <Link color="textPrimary" to={category.uri}>{category.name}</Link>
+        </Typography>
+      </ButtonBase>
     </Grid>
   )
 }
@@ -29,6 +35,7 @@ const CategoryBar = () => {
       nodes {
         id
         name
+        uri
       }
     }
   }
@@ -42,8 +49,8 @@ const CategoryBar = () => {
   }).filter(({ name }) => !!name)
   return (
     <Grid container justify={"space-evenly"}>
-      {categories.map(({ id, name }) => {
-        return <Category key={id} name={name} />
+      {categories.map((category) => {
+        return <Category key={category.id} {...category} />
       })}
     </Grid>
   )
