@@ -8,6 +8,90 @@
   Relay Resource
 </h1>
 
+## How to develop
+
+## Steps
+
+**Warning this workflow has not been thoroughly tested. If you find yourself spending more than a couple minuets on any step feel free to take a screen shot and send it to the tech channel. I am sure someone will be able to help out**
+
+If you run into any errors following these steps and figure out how to do anything better please edit this readme.
+
+1. Change to `dev` branch
+   ```bash
+   $ git checkout dev
+   ```
+2. Make sure your working branch is clean (may have to commit or discard changes)
+   ```bash
+   # Should say working branch is clean
+   # if not you will have to add changes or discard them
+   $ git status
+   ```
+3. Pull any updates
+   ```bash
+   # Synchronize your local version
+   $ git pull
+   ```
+4. Create a new branch
+   ```bash
+   # Creates a branch but does not change your current branch
+   $ git branch [your-branch]
+   # Change to that branch
+   $ git checkout [your-branch]
+   ```
+5. Develop
+   ```bash
+   # Installs dependencies. May already be installed but just to double check
+   $ npm install
+   # equivalent to `gatsby clean` then `gatsby develop`
+   $ npm run develop
+   ```
+6. Stage changes
+   ```bash
+   # stage
+   $ git add [path-to-your-changed-files]
+   # OR to stage all changed files
+   $ git add .
+   # make sure your branch is clean
+   $ git status
+   ```
+7. Commit changes
+   ```bash
+   $ git commit -m "[your message]"
+   ```
+8. Switch to dev with `git checkout dev`
+9. Merge `[your-branch]` to dev
+   ```bash
+   $ git merge `[your-branch]`
+   ```
+10. Push changes to origin/dev (you must be a contributor)
+    ```bash
+    # make sure you branch is clean
+    $ git status
+    # make sure you have most recent version
+    $ git pull
+    # (Optional) run locally
+    $ npm run serve
+    # push to dev
+    $ git push origin dev
+    ```
+11. Open https://github.com/BenLirio/relay
+12. Create a pull request from dev to master that will look like this
+    ```
+    master <- dev
+    ```
+13. Starting August 1 merge request will required to be reviewed
+
+## Notes:
+
+- Merging to master should result in a functional website 99% of the time. If you would like to test your application locally run:
+  ```bash
+  # this will serve production equivalent application to localhost:9000
+  $ npm run serve
+  ```
+- You will have to set up your /keys/relay-cms-key.json file. Should be pinned in the relay slack channel.
+- Running npm install will give you multiple warnings and possibly some errors, should be ok as long as it completes.
+- Try your best to not work directly on `dev` branch, could cause confusing merge conflicts.
+
 ## 🚀 Run Locally (Linux and Mac)
 
 1.  **Download Dependencies**

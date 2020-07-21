@@ -1,44 +1,58 @@
-import React from 'react'
-import { Toolbar, Button, AppBar } from '@material-ui/core'
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import React from "react"
+import { Toolbar, Button, AppBar, Grid, Typography, ButtonBase } from "@material-ui/core"
+import { Link } from 'gatsby-theme-material-ui'
+import { useStaticQuery, graphql } from "gatsby"
 
-const IGNORED_CATEGORIES = ['Uncategorized', 'Caregiving', 'Tested Positive']
+const names = new Map()
+names.set('dGVybToxMDE2', 'Caregiving')
+names.set('dGVybTo2ODA=', 'Editors Pick')
+names.set('dGVybToxNw==', 'Hospital')
+names.set('dGVybToxMDMy', 'Interviews')
+names.set('dGVybToxNg==', 'Coping')
+names.set('dGVybToz', 'Reliable Sources')
+names.set('dGVybToxMDE3', 'Narratives')
+names.set('dGVybToxOA==', 'Tested Positive')
+names.set('dGVybToxOQ==', 'Advice')
+
+
+const Category = (category) => {
+
+  return (
+    <Grid item>
+      <ButtonBase>
+        <Typography variant="subtitle1">
+          <Link color="textPrimary" to={category.uri}>{category.name}</Link>
+        </Typography>
+      </ButtonBase>
+    </Grid>
+  )
+}
 
 const CategoryBar = () => {
   const { allWpCategory } = useStaticQuery(graphql`
-    query CategoryBarQuery {
-      allWpCategory {
-        edges {
-          node {
-            name
-            id
-            uri
-          }
-        }
+  query CategoryBarQuery {
+    allWpCategory {
+      nodes {
+        id
+        name
+        uri
       }
     }
+  }
   `)
-  const { edges } = allWpCategory
-  const filteredEdges = [...edges].filter(
-    ({ node }) => !IGNORED_CATEGORIES.includes(node.name)
-  )
+  const categories = allWpCategory.nodes.map(node => {
+    const name = names.get(node.id) || null
+    return {
+      ...node,
+      name
+    }
+  }).filter(({ name }) => !!name)
   return (
-    <AppBar position="static">
-      <Toolbar>
-        {filteredEdges.map(({ node }) => {
-          return (
-            <Button
-              color="inherit"
-              key={node.id}
-              component={Link}
-              to={node.uri}
-            >
-              {node.name}
-            </Button>
-          )
-        })}
-      </Toolbar>
-    </AppBar>
+    <Grid container justify={"space-evenly"}>
+      {categories.map((category) => {
+        return <Category key={category.id} {...category} />
+      })}
+    </Grid>
   )
 }
 

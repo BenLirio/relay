@@ -1,12 +1,15 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Typography } from '@material-ui/core'
+import { Typography, Container } from '@material-ui/core'
 
 const BlogPost = ({ data }) => {
   const { wpPost } = data
   return (
     <>
-      <Typography variant="h1">{wpPost.title}</Typography>
+      <Container maxWidth="sm">
+        <Typography variant="h2">{wpPost.title}</Typography>
+        <div dangerouslySetInnerHTML={{ __html: wpPost.content }}></div>
+      </Container>
     </>
   )
 }

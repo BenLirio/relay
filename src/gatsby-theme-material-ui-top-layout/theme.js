@@ -1,4 +1,5 @@
-import { createMuiTheme } from '@material-ui/core'
+import { createMuiTheme } from "@material-ui/core";
+import { typography } from './typogrophy'
 
 const props = {
   MuiCard: {
@@ -28,8 +29,12 @@ const theme = createMuiTheme({
     type: 'light',
     primary,
     secondary,
+    background: {
+      default: '#FFFFFF'
+    }
   },
   shape,
-})
+  typography
+});
 
 export default theme
