@@ -12,7 +12,7 @@
 
 ## Steps
 
-**Warning this workflow has not been thoroughly tested. If you find yourself spending more than a couple minuets on any step feel free to take a screen shot and send it to the tech channel. I am sure someone will be able to help out**
+**Warning this workflow has not been thoroughly tested. If you find yourself spending more than a couple minutes on any step feel free to take a screen shot and send it to the tech channel. I am sure someone will be able to help out**
 
 If you run into any errors following these steps and figure out how to do anything better please edit this readme.
 
