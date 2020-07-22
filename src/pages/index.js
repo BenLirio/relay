@@ -10,12 +10,15 @@ import {
   CardHeader,
   CardMedia,
   Box,
+  makeStyles,
+  Link,
 } from "@material-ui/core"
 import { graphql } from "gatsby"
 import CategoryBar from "../components/CategoryBar"
 import Img from "gatsby-image"
 import Post from "../components/shared/Post"
 import Helmet from "react-helmet"
+
 
 const Relay = ({ data }) => {
   const { allWpPost } = data
@@ -97,6 +100,14 @@ const Relay = ({ data }) => {
             <Grid item xs container direction="row" justify="space-evenly">
               <Grid item>
                 <Typography>How to Donate</Typography>
+
+                <Button variant="outlined" color="primary"
+                href="https://relay-resource.web.app/how-to-help/"
+                variant="contained"
+                >
+                  How to Donate
+                </Button>
+                
               </Grid>
               <Grid item>
                 <Box height="100px" width="100px" bgcolor="grey.900"></Box>
@@ -106,6 +117,14 @@ const Relay = ({ data }) => {
             <Grid item xs container direction="row" justify="space-evenly">
               <Grid item>
                 <Typography>How to Volunteer</Typography>
+
+                <Button variant="outlined" color="primary"
+                href="https://relay-resource.web.app/how-to-help/"
+                variant="contained"
+                >
+                  How to Volunteer
+                </Button>
+
               </Grid>
               <Grid item>
                 <Box height="100px" width="100px" bgcolor="grey.900"></Box>
@@ -115,6 +134,12 @@ const Relay = ({ data }) => {
             <Grid item xs container direction="row" justify="space-evenly">
               <Grid item>
                 <Typography>How to Advocate</Typography>
+                <Button variant="outlined" color="primary"
+                href="https://relay-resource.web.app/how-to-help/"
+                variant="contained"
+                >
+                  How to Advocate
+                </Button>
               </Grid>
               <Grid item>
                 <Box height="100px" width="100px" bgcolor="grey.900"></Box>
