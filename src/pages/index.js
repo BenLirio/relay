@@ -17,6 +17,7 @@ import { graphql } from "gatsby"
 import CategoryBar from "../components/CategoryBar"
 import Img from "gatsby-image"
 import Post from "../components/shared/Post"
+import Helmet from "react-helmet"
 
 
 const Relay = ({ data }) => {
@@ -26,6 +27,21 @@ const Relay = ({ data }) => {
   const firstPost = allWpPost.nodes[0]
   return (
     <div>
+      <Helmet>
+        <title>The Relay Resource</title>
+        <meta
+          name="description"
+          content="A completely student-run resource to help families dealing with COVID-19."
+        />
+        <meta name="keywords" content="" />
+        <meta property="og:title" content="" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="" />
+        <meta property="og:image" content="" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:url" content="" />
+        <link rel="canonical" href="" />
+      </Helmet>
       <Container>
         <Grid style={{ marginTop: "24px" }} container spacing={3}>
           <Grid style={{ marginBottom: "16px" }} container justify="center">
