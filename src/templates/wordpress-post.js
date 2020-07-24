@@ -9,7 +9,8 @@ const BlogPost = ({ data }) => {
       <Container maxWidth="sm">
         <Link to="/">Home Page</Link>
         <Typography variant="h2">{wpPost.title}</Typography>
-        <Typography variant="h5">By: {wpPost.author.node.name}</Typography>
+        {/* <Typography variant="h5">By: {wpPost.author.node.name}</Typography>  */}
+        {/* The above code works only for the Index page blogs. No idea why. */}
         <div dangerouslySetInnerHTML={{ __html: wpPost.content }}></div>
       </Container>
     </>
