@@ -9,6 +9,7 @@ const BlogPost = ({ data }) => {
       <Container maxWidth="sm">
         <Link to="/">Home Page</Link>
         <Typography variant="h2">{wpPost.title}</Typography>
+        <Typography variant="h5">By: {wpPost.author.node.name}</Typography>
         <div dangerouslySetInnerHTML={{ __html: wpPost.content }}></div>
       </Container>
     </>
@@ -24,6 +25,11 @@ export const pageQuery = graphql`
       title
       excerpt
       content
+      author {
+        node {
+          name
+        }
+      }
     }
   }
 `
