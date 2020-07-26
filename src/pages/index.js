@@ -19,7 +19,6 @@ import Img from "gatsby-image"
 import Post from "../components/shared/Post"
 import Helmet from "react-helmet"
 
-
 const Relay = ({ data }) => {
   const { allWpPost } = data
   const clonePosts = allWpPost.nodes.slice()
@@ -28,6 +27,7 @@ const Relay = ({ data }) => {
   return (
     <div>
       <Helmet>
+        {/* 
         <title>The Relay Resource</title>
         <meta
           name="description"
@@ -41,6 +41,7 @@ const Relay = ({ data }) => {
         <meta property="og:locale" content="en_US" />
         <meta property="og:url" content="" />
         <link rel="canonical" href="" />
+         */}
       </Helmet>
       <Container>
         <Grid style={{ marginTop: "24px" }} container spacing={3}>
@@ -101,13 +102,14 @@ const Relay = ({ data }) => {
               <Grid item>
                 <Typography>How to Donate</Typography>
 
-                <Button variant="outlined" color="primary"
-                href="https://relay-resource.web.app/how-to-help/"
-                variant="contained"
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  href="https://relay-resource.web.app/how-to-help/"
+                  variant="contained"
                 >
                   How to Donate
                 </Button>
-                
               </Grid>
               <Grid item>
                 <Box height="100px" width="100px" bgcolor="grey.900"></Box>
@@ -118,13 +120,14 @@ const Relay = ({ data }) => {
               <Grid item>
                 <Typography>How to Volunteer</Typography>
 
-                <Button variant="outlined" color="primary"
-                href="https://relay-resource.web.app/how-to-help/"
-                variant="contained"
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  href="https://relay-resource.web.app/how-to-help/"
+                  variant="contained"
                 >
                   How to Volunteer
                 </Button>
-
               </Grid>
               <Grid item>
                 <Box height="100px" width="100px" bgcolor="grey.900"></Box>
@@ -134,9 +137,11 @@ const Relay = ({ data }) => {
             <Grid item xs container direction="row" justify="space-evenly">
               <Grid item>
                 <Typography>How to Advocate</Typography>
-                <Button variant="outlined" color="primary"
-                href="https://relay-resource.web.app/how-to-help/"
-                variant="contained"
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  href="https://relay-resource.web.app/how-to-help/"
+                  variant="contained"
                 >
                   How to Advocate
                 </Button>
