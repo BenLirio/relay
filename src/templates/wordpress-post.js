@@ -1,11 +1,13 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import { Typography, Container } from "@material-ui/core"
+import SEO from "../components/SEO"
 
 const BlogPost = ({ data }) => {
   const { wpPost } = data
   return (
     <>
+      <SEO></SEO>
       <Container maxWidth="sm">
         <Link to="/">Home Page</Link>
         <Typography variant="h2">{wpPost.title}</Typography>

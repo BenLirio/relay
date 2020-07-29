@@ -6,7 +6,9 @@ import { useStaticQuery, graphql } from "gatsby"
 
 const SEO = ({ title, description, image, article }) => {
   const { pathname } = useLocation()
-  const { site } = useStaticQuery(query)
+  const { site, wpPage } = useStaticQuery(query)
+
+  console.log("Wordpress page stuff: ", wpPage)
 
   const {
     defaultTitle,
@@ -53,6 +55,7 @@ SEO.defaultProps = {
   article: false,
 }
 
+//SEO only pulls from the Gatsby-config 'siteMetadata' default values. Still working on pulling SEO tags from Wordpress...
 const query = graphql`
   query SEO {
     site {
@@ -61,6 +64,21 @@ const query = graphql`
         defaultDescription: description
         siteUrl: url
         defaultImage: image
+      }
+    }
+    wpPage {
+      seo {
+        canonical
+        focuskw
+        defaultDescription: metaDesc
+        metaKeywords
+        defaultTitle: title
+        siteUrl: opengraphUrl
+        opengraphImage {
+          status
+          uri
+          title
+        }
       }
     }
   }
