@@ -18,6 +18,7 @@ import CategoryBar from "../components/CategoryBar"
 import Img from "gatsby-image"
 import Post from "../components/shared/Post"
 import Helmet from "react-helmet"
+import SEO from "../components/SEO"
 
 const Relay = ({ data }) => {
   const { allWpPost } = data
@@ -26,23 +27,7 @@ const Relay = ({ data }) => {
   const firstPost = allWpPost.nodes[0]
   return (
     <div>
-      <Helmet>
-        {/* 
-        <title>The Relay Resource</title>
-        <meta
-          name="description"
-          content="A completely student-run resource to help families dealing with COVID-19."
-        />
-        <meta name="keywords" content="" />
-        <meta property="og:title" content="" />
-        <meta property="og:type" content="website" />
-        <meta property="og:description" content="" />
-        <meta property="og:image" content="" />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:url" content="" />
-        <link rel="canonical" href="" />
-         */}
-      </Helmet>
+      <SEO></SEO>
       <Container>
         <Grid style={{ marginTop: "24px" }} container spacing={3}>
           <Grid style={{ marginBottom: "16px" }} container justify="center">
@@ -105,7 +90,7 @@ const Relay = ({ data }) => {
                 <Button
                   variant="outlined"
                   color="primary"
-                  href="https://relay-resource.web.app/how-to-help/"
+                  href="/how-to-help/"
                   variant="contained"
                 >
                   How to Donate
@@ -123,7 +108,7 @@ const Relay = ({ data }) => {
                 <Button
                   variant="outlined"
                   color="primary"
-                  href="https://relay-resource.web.app/how-to-help/"
+                  href="/how-to-help/"
                   variant="contained"
                 >
                   How to Volunteer
@@ -140,7 +125,7 @@ const Relay = ({ data }) => {
                 <Button
                   variant="outlined"
                   color="primary"
-                  href="https://relay-resource.web.app/how-to-help/"
+                  href="/how-to-help/"
                   variant="contained"
                 >
                   How to Advocate
@@ -175,7 +160,7 @@ const Relay = ({ data }) => {
                   margin: "5px",
                 }}
                 variant="contained"
-                href="https://relay-resource.web.app/about"
+                href="/about"
               >
                 Meet The Team
               </Button>
@@ -186,7 +171,7 @@ const Relay = ({ data }) => {
                   backgroundColor: "#559cd1",
                   margin: "5px",
                 }}
-                href="https://relay-resource.web.app/about"
+                href="/about"
                 variant="contained"
               >
                 Our Mission
