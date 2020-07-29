@@ -33,7 +33,12 @@ const Relay = ({ data }) => {
         <Grid style={{ marginTop: "24px" }} container spacing={3}>
           <Grid style={{ marginBottom: "16px" }} container justify="center">
             <Grid item style={{ marginBottom: "24px" }}>
-              <Typography variant="h1">The Relay Resource</Typography>
+              <Hidden only="xs">
+                <Typography variant="h1" style={{ textAlign: 'center' }}>The Relay Resource</Typography>
+              </Hidden>
+              <Hidden smUp>
+                <Typography variant="h2" style={{ textAlign: 'center' }}>The Relay Resource</Typography>
+              </Hidden>
             </Grid>
             <Grid item xs={12}></Grid>
             <Divider

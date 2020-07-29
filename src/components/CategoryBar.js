@@ -1,5 +1,5 @@
 import React from "react"
-import { Toolbar, Button, AppBar, Grid, Typography, ButtonBase } from "@material-ui/core"
+import { Toolbar, Button, AppBar, Grid, Typography, ButtonBase, Hidden } from "@material-ui/core"
 import { Link } from 'gatsby-theme-material-ui'
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -49,9 +49,15 @@ const CategoryBar = () => {
   }).filter(({ name }) => !!name)
   return (
     <Grid container justify={"space-evenly"}>
-      {categories.map((category) => {
-        return <Category key={category.id} {...category} />
-      })}
+      <Hidden smDown>
+        {categories.map((category) => {
+          return (
+            <>
+              <Category key={category.id} {...category} />
+            </>
+          )
+        })}
+      </Hidden>
     </Grid>
   )
 }
