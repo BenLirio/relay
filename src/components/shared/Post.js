@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
-import { Typography, Grid, Box, useTheme, Link, ButtonBase } from '@material-ui/core'
+import { Typography, Grid, Box, useTheme, Link, ButtonBase, Card, CardContent, CardHeader, CardMedia, CardActionArea, Hidden } from '@material-ui/core'
 import Img from 'gatsby-image'
 import { Link as GatsbyLink } from 'gatsby'
 
@@ -58,21 +58,35 @@ const PostExcerpt = ({ excerpt }) => {
 
 const Post = ({ post, size = 'md', featuredImage = false, image = 'none' }) => {
   const theme = useTheme()
-  console.log('post.acfAuthor', post.acfAuthor)
   return (
-    <ButtonBase style={{ paddingTop: theme.spacing(2), paddingBottom: theme.spacing(2) }} component={GatsbyLink} to={post.uri}>
-      <Grid container spacing={1} direction="column">
-        <Grid item>
-          {image === 'top' ? <PostFeaturedImage featuredImage={post.featuredImage} /> : null}
-          <PostTitle title={post.title} uri={post.uri} size={size} />
-        </Grid>
-        <Grid item>
-          {image === 'mid' ? <PostFeaturedImage featuredImage={post.featuredImage} /> : null}
-          <Contributors editor={post.author.node} author={post.acfAuthor} />
-          <PostExcerpt excerpt={post.excerpt} />
-        </Grid>
-      </Grid>
-    </ButtonBase>
+    <>
+      <Hidden smUp>
+        <Card>
+          <CardActionArea>
+            <CardHeader title={post.title} subheader={<Contributors author={post.acfAuthor} editor={post.author} />} />
+            <CardMedia component={PostFeaturedImage} featuredImage={post.featuredImage} />
+            <CardContent>
+              <PostExcerpt excerpt={post.excerpt} />
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </Hidden>
+      <Hidden only="xs">
+        <ButtonBase style={{ paddingTop: theme.spacing(2), paddingBottom: theme.spacing(2) }} component={GatsbyLink} to={post.uri}>
+          <Grid container spacing={1} direction="column">
+            <Grid item>
+              {image === 'top' ? <PostFeaturedImage featuredImage={post.featuredImage} /> : null}
+              <PostTitle title={post.title} uri={post.uri} size={size} />
+            </Grid>
+            <Grid item>
+              {image === 'mid' ? <PostFeaturedImage featuredImage={post.featuredImage} /> : null}
+              <Contributors editor={post.author.node} author={post.acfAuthor} />
+              <PostExcerpt excerpt={post.excerpt} />
+            </Grid>
+          </Grid>
+        </ButtonBase>
+      </Hidden>
+    </>
   )
 }
 
