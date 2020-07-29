@@ -74,6 +74,10 @@ export const pageQuery = graphql`
               name
             }
           }
+          acfAuthor {
+            firstName
+            lastName
+          }
           featuredImage {
             node {
               localFile {
