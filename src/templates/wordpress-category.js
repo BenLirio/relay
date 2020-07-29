@@ -47,7 +47,7 @@ const CategoryPage = ({ data }) => {
         </Grid>
         {[...posts].splice(5).map(post => {
           return (
-            <Grid item xs={4}>
+            <Grid key={post.id} item xs={4}>
               <Post post={post} image="top" />
             </Grid>
           )
@@ -69,6 +69,11 @@ export const pageQuery = graphql`
           id
           uri
           excerpt
+          author {
+            node {
+              name
+            }
+          }
           featuredImage {
             node {
               localFile {

@@ -215,6 +215,15 @@ export const pageQuery = graphql`
         id
         excerpt
         uri
+        author {
+          node {
+            name
+          }
+        }
+        acfAuthor {
+          firstName
+          lastName
+        }
         featuredImage {
           node {
             localFile {

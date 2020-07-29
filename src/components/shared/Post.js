@@ -33,6 +33,15 @@ const PostFeaturedImage = ({ featuredImage }) => {
   )
 }
 
+const Contributors = ({ author, editor }) => {
+  return (
+    <>
+      <Typography variant="subtitle2">Author: {`${author.firstName} ${author.lastName}`}</Typography>
+      <Typography variant="subtitle2">Editor: {editor.name}</Typography>
+    </>
+  )
+}
+
 const PostExcerpt = ({ excerpt }) => {
 
   let formatedExcerpt = ''
@@ -49,6 +58,7 @@ const PostExcerpt = ({ excerpt }) => {
 
 const Post = ({ post, size = 'md', featuredImage = false, image = 'none' }) => {
   const theme = useTheme()
+  console.log('post.acfAuthor', post.acfAuthor)
   return (
     <ButtonBase style={{ paddingTop: theme.spacing(2), paddingBottom: theme.spacing(2) }} component={GatsbyLink} to={post.uri}>
       <Grid container spacing={1} direction="column">
@@ -58,6 +68,7 @@ const Post = ({ post, size = 'md', featuredImage = false, image = 'none' }) => {
         </Grid>
         <Grid item>
           {image === 'mid' ? <PostFeaturedImage featuredImage={post.featuredImage} /> : null}
+          <Contributors editor={post.author.node} author={post.acfAuthor} />
           <PostExcerpt excerpt={post.excerpt} />
         </Grid>
       </Grid>
