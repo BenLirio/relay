@@ -9,12 +9,15 @@ import {
   Tab,
 } from "@material-ui/core"
 import FeatureImage from "../../components/FeatureImage"
+import Navbar from "../../components/Navbar"
+import SEO from "../../components/SEO"
 import Img from "gatsby-image"
 import { graphql } from "gatsby"
 
 const OurMission = ({ contentImage }) => {
   return (
     <>
+      <SEO></SEO>
       <Grid item xs={12}>
         <Typography variant="h2">Our Mission</Typography>
       </Grid>
@@ -54,6 +57,7 @@ export const AboutPage = ({ data, location }) => {
   const { contentImage } = data
   return (
     <>
+      <Navbar> </Navbar>
       <FeatureImage image={data.image}>
         <Typography variant="h1">About</Typography>
       </FeatureImage>

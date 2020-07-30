@@ -1,8 +1,11 @@
 module.exports = {
+  // A supposed best practice is to place site meta information here
   siteMetadata: {
-    title: "Gatsby + Netlify CMS Starter",
+    title: "The Relay Resource",
     description:
-      "This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.",
+      "Relay is a resource to help families throughout the COVID-19 pandemic. Read our story and learn more about us here at Relay.",
+    url: "https://www.therelayresource.com",
+    image: "/img/logo.svg", // Path to your image you placed in the 'static' folder
   },
   plugins: [
     "gatsby-plugin-react-helmet",

@@ -1,14 +1,16 @@
-import React from 'react'
-import { Typography, Container, Grid } from '@material-ui/core'
-import FeatureImage from '../../components/FeatureImage'
-import Posts from '../../components/Posts'
-import { graphql } from 'gatsby'
+import React from "react"
+import { Typography, Container, Grid } from "@material-ui/core"
+import FeatureImage from "../../components/FeatureImage"
+import Posts from "../../components/Posts"
+import SEO from "../../components/SEO"
+import { graphql } from "gatsby"
 
 const Index = ({ data }) => {
   const { allWpPostArchive } = data
   const { allWpPostRecent } = data
   return (
     <>
+      <SEO></SEO>
       <FeatureImage image={data.image}>
         <Typography variant="h1" color="primary">
           Feature Image

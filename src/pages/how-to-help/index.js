@@ -1,12 +1,14 @@
-import React from 'react'
-import { Typography, Container, Grid } from '@material-ui/core'
-import FeatureImage from '../../components/FeatureImage'
-import Img from 'gatsby-image'
-import { graphql } from 'gatsby'
+import React from "react"
+import { Typography, Container, Grid } from "@material-ui/core"
+import FeatureImage from "../../components/FeatureImage"
+import Img from "gatsby-image"
+import SEO from "../../components/SEO"
+import { graphql } from "gatsby"
 
 const HowToHelp = ({ data }) => {
   return (
     <>
+      <SEO></SEO>
       <FeatureImage image={data.image}>
         <Typography variant="h1" color="primary">
           How To Help

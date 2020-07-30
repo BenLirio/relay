@@ -1,5 +1,5 @@
-import React from "react"
-import { Toolbar, Button, AppBar, Grid, Typography, ButtonBase } from "@material-ui/core"
+import React, { useState } from "react"
+import { Toolbar, Button, AppBar, Grid, Typography, ButtonBase, Hidden, Menu, MenuItem } from "@material-ui/core"
 import { Link } from 'gatsby-theme-material-ui'
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -29,6 +29,7 @@ const Category = (category) => {
 }
 
 const CategoryBar = () => {
+  const [anchorEl, setAnchorEl] = useState(null)
   const { allWpCategory } = useStaticQuery(graphql`
   query CategoryBarQuery {
     allWpCategory {
@@ -47,11 +48,42 @@ const CategoryBar = () => {
       name
     }
   }).filter(({ name }) => !!name)
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
   return (
     <Grid container justify={"space-evenly"}>
-      {categories.map((category) => {
-        return <Category key={category.id} {...category} />
-      })}
+      <Hidden smDown>
+        {categories.map((category) => {
+          return (
+            <>
+              <Category key={category.id} {...category} />
+            </>
+          )
+        })}
+      </Hidden>
+      <Hidden mdUp>
+        <Button>About</Button>
+        <Button onClick={handleClick}>Categories</Button>
+        <Button>How to Help</Button>
+        <Menu
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          {categories.map((category) => {
+            return (
+              <>
+                <MenuItem component={Link} color="textPrimary" to={category.uri} key={category.id}>{category.name}</MenuItem>
+              </>
+            )
+          })}
+        </Menu>
+      </Hidden>
     </Grid>
   )
 }
