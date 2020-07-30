@@ -11,25 +11,28 @@ import {
   CardMedia,
   Box,
   makeStyles,
-  Link,
   Hidden,
   ButtonBase,
 } from "@material-ui/core"
-import { graphql } from "gatsby"
+import { graphql, navigate } from "gatsby"
 import CategoryBar from "../components/CategoryBar"
 import Img from "gatsby-image"
 import Post from "../components/shared/Post"
 import Helmet from "react-helmet"
 import SEO from "../components/SEO"
 import IconCta from "../components/IconCta"
+import { Link } from 'gatsby-plugin-material-ui'
 
 const Relay = ({ data }) => {
   const { allWpPost } = data
   const clonePosts = allWpPost.nodes.slice()
   const otherPosts = clonePosts.splice(4, 4)
   const firstPost = allWpPost.nodes[0]
+  const goToAbout = () => {
+    navigate('/about')
+  }
   return (
-    <div>
+    <>
       <SEO></SEO>
       <Container>
         <Grid style={{ marginTop: "24px" }} container spacing={3}>
@@ -149,33 +152,17 @@ const Relay = ({ data }) => {
               <Grid item xs={8} container spacing={3}>
                 <Post post={allWpPost.nodes[3]} />
               </Grid>
-              <Divider orientation="vertical" style={{ width: "1px" }} flexItem />
-              <Grid item xs>
-                <Typography variant="h5">Who are we?</Typography>
-
-                <Button
-                  mt={1}
-                  style={{
-                    backgroundColor: "#559cd1",
-                    margin: "5px",
-                  }}
-                  variant="contained"
-                  href="/about"
-                >
-                  Meet The Team
-              </Button>
-
-                <Button
-                  mt={1}
-                  style={{
-                    backgroundColor: "#559cd1",
-                    margin: "5px",
-                  }}
-                  href="/about"
-                  variant="contained"
-                >
-                  Our Mission
-              </Button>
+              <Divider orientation="vertical" style={{ width: "1px", margin: '4px' }} flexItem />
+              <Grid item xs container spacing={3} direction="column" alignContent="center" alignItems="center">
+                <Grid item xs>
+                  <Typography variant="h5">Made by students</Typography>
+                </Grid>
+                <Grid item xs>
+                  <Button onClick={goToAbout} variant="outlined">Meet The Team</Button>
+                </Grid>
+                <Grid item xs>
+                  <Button onClick={goToAbout} variant="outlined">Our Mission</Button>
+                </Grid>
               </Grid>
             </Grid>
           </Hidden>
@@ -208,7 +195,7 @@ const Relay = ({ data }) => {
           </Grid>
         </Grid>
       </Container>
-    </div>
+    </>
   )
 }
 

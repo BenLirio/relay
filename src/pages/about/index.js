@@ -7,12 +7,14 @@ import {
   AppBar,
   Tabs,
   Tab,
+  Button,
 } from "@material-ui/core"
 import FeatureImage from "../../components/FeatureImage"
 import Navbar from "../../components/Navbar"
 import SEO from "../../components/SEO"
 import Img from "gatsby-image"
 import { graphql } from "gatsby"
+import BackBar from "../../components/BackBar"
 
 const OurMission = ({ contentImage }) => {
   return (
@@ -57,11 +59,10 @@ export const AboutPage = ({ data, location }) => {
   const { contentImage } = data
   return (
     <>
-      <Navbar> </Navbar>
+      <BackBar />
       <FeatureImage image={data.image}>
-        <Typography variant="h1">About</Typography>
       </FeatureImage>
-      <AppBar position="static">
+      <AppBar position="static" variant="outlined" color="transparent">
         <Tabs value={value} onChange={handleChange}>
           <Tab label="Our Mission" />
           <Tab label="Our team" />
@@ -72,8 +73,8 @@ export const AboutPage = ({ data, location }) => {
           {value === 0 ? (
             <OurMission contentImage={contentImage} />
           ) : (
-            <OurTeam />
-          )}
+              <OurTeam />
+            )}
         </Grid>
       </Container>
     </>
@@ -84,7 +85,7 @@ export default AboutPage
 
 export const pageQuery = graphql`
   query AboutPage {
-    image: file(relativePath: { eq: "feature-about.jpg" }) {
+    image: file(relativePath: { eq: "about.png" }) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid
