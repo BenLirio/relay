@@ -13,6 +13,7 @@ import {
   makeStyles,
   Link,
   Hidden,
+  ButtonBase,
 } from "@material-ui/core"
 import { graphql } from "gatsby"
 import CategoryBar from "../components/CategoryBar"
@@ -20,6 +21,7 @@ import Img from "gatsby-image"
 import Post from "../components/shared/Post"
 import Helmet from "react-helmet"
 import SEO from "../components/SEO"
+import IconCta from "../components/IconCta"
 
 const Relay = ({ data }) => {
   const { allWpPost } = data
@@ -52,7 +54,7 @@ const Relay = ({ data }) => {
             />
           </Grid>
           {/* XS UP */}
-          <Hidden only="xs">
+          <Hidden smDown>
             <Grid item xs={12} container spacing={3}>
               <Grid item xs={9} container spacing={3}>
                 <Grid item xs={5}>
@@ -80,7 +82,7 @@ const Relay = ({ data }) => {
           </Hidden>
 
           {/* XS */}
-          <Hidden smUp>
+          <Hidden mdUp>
             <Grid item xs={12}>
               <Post post={allWpPost.nodes[0]} image="mid" />
             </Grid>
@@ -111,58 +113,27 @@ const Relay = ({ data }) => {
             style={{ width: "100%", height: "1px", marginBottom: "8px" }}
             flexItem
           />
-          <Grid container item xs={12} justify="space-between" spacing={3}>
-            <Grid item xs={12} md container direction="row" justify="space-evenly">
-              <Grid item>
-                <Typography>How to Donate</Typography>
-
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  href="/how-to-help/"
-                  variant="contained"
-                >
-                  How to Donate
-                </Button>
-              </Grid>
-              <Grid item>
-                <Box height="100px" width="100px" bgcolor="grey.900"></Box>
-              </Grid>
-            </Grid>
+          <Grid item xs={12} container spacing={3}>
+            <IconCta to="/about">
+              <Box display="flex" flexDirection="column">
+                <Img style={{ width: '100px' }} fixed={data.donateImage.childImageSharp.fixed} />
+                <Typography variant="subtitle1">How To Donate</Typography>
+              </Box>
+            </IconCta>
             <Divider orientation="vertical" style={{ width: "1px" }} flexItem />
-            <Grid item xs={12} md container direction="row" justify="space-evenly">
-              <Grid item>
-                <Typography>How to Volunteer</Typography>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  href="/how-to-help/"
-                  variant="contained"
-                >
-                  How to Volunteer
-                </Button>
-              </Grid>
-              <Grid item>
-                <Box height="100px" width="100px" bgcolor="grey.900"></Box>
-              </Grid>
-            </Grid>
+            <IconCta to="about">
+              <Box display="flex" flexDirection="column">
+                <Img style={{ width: '100px' }} fixed={data.helpImage.childImageSharp.fixed} />
+                <Typography variant="subtitle1">How To Help</Typography>
+              </Box>
+            </IconCta>
             <Divider orientation="vertical" style={{ width: "1px" }} flexItem />
-            <Grid item xs={12} md container direction="row" justify="space-evenly">
-              <Grid item>
-                <Typography>How to Advocate</Typography>
-                <Button
-                  variant="outlined"
-                  color="primary"
-                  href="/how-to-help/"
-                  variant="contained"
-                >
-                  How to Advocate
-                </Button>
-              </Grid>
-              <Grid item>
-                <Box height="100px" width="100px" bgcolor="grey.900"></Box>
-              </Grid>
-            </Grid>
+            <IconCta to="/about">
+              <Box display="flex" flexDirection="column">
+                <Img style={{ width: '100px' }} fixed={data.advocateImage.childImageSharp.fixed} />
+                <Typography variant="subtitle1">How To Advocate</Typography>
+              </Box>
+            </IconCta>
           </Grid>
           <Divider
             style={{
@@ -270,6 +241,27 @@ export const pageQuery = graphql`
               }
             }
           }
+        }
+      }
+    }
+    advocateImage: file(relativePath: { eq: "advocate.png" }) {
+      childImageSharp {
+        fixed(width: 100) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    donateImage: file(relativePath: { eq: "donate.png" }) {
+      childImageSharp {
+        fixed(width: 100) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    helpImage: file(relativePath: { eq: "help.png" }) {
+      childImageSharp {
+        fixed(width: 100) {
+          ...GatsbyImageSharpFixed
         }
       }
     }
