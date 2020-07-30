@@ -32,7 +32,7 @@ const Relay = ({ data }) => {
     navigate('/about')
   }
   return (
-    <div>
+    <>
       <SEO></SEO>
       <Container>
         <Grid style={{ marginTop: "24px" }} container spacing={3}>
@@ -195,7 +195,7 @@ const Relay = ({ data }) => {
           </Grid>
         </Grid>
       </Container>
-    </div >
+    </>
   )
 }
 
