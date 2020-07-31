@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { Typography, Grid, Box, useTheme, Link, ButtonBase, Card, CardContent, CardHeader, CardMedia, CardActionArea, Hidden } from '@material-ui/core'
 import Img from 'gatsby-image'
-import { Link as GatsbyLink } from 'gatsby'
+import { Link as GatsbyLink, navigate } from 'gatsby'
 
 const PostTitle = ({ title, size }) => {
   let titleSize
@@ -58,11 +58,14 @@ const PostExcerpt = ({ excerpt }) => {
 
 const Post = ({ post, size = 'md', featuredImage = false, image = 'none' }) => {
   const theme = useTheme()
+  const goToPost = () => {
+    navigate(post.uri)
+  }
   return (
     <>
       <Hidden smUp>
         <Card>
-          <CardActionArea>
+          <CardActionArea onClick={goToPost}>
             <CardHeader title={post.title} subheader={<Contributors author={post.acfAuthor} editor={post.author} />} />
             <CardMedia component={PostFeaturedImage} featuredImage={post.featuredImage} />
             <CardContent>
