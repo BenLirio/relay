@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import { Typography, Container } from "@material-ui/core"
 import SEO from "../components/SEO"
+import BackBar from "../components/BackBar"
 
 const BlogPost = ({ data }) => {
   const { wpPost } = data
@@ -9,7 +10,7 @@ const BlogPost = ({ data }) => {
     <>
       <SEO></SEO>
       <Container maxWidth="sm">
-        <Link to="/">Home Page</Link>
+        <BackBar></BackBar>
         <Typography variant="h2">{wpPost.title}</Typography>
         {/* <Typography variant="h5">By: {wpPost.author.node.name}</Typography>  */}
         {/* The above code works only for the Index page blogs. No idea why. */}
