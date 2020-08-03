@@ -114,7 +114,6 @@ const BlogPost = ({ data }) => {
       <SEO></SEO>
       <BackBar />
       <Container maxWidth="sm">
-        <BackBar></BackBar>
         <Img
           fluid={wpPost.featuredImage.node.localFile.childImageSharp.fluid}
         />
