@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Toolbar, Button, AppBar, Grid, Typography, ButtonBase, Hidden, Menu, MenuItem } from "@material-ui/core"
 import { Link } from 'gatsby-theme-material-ui'
-import { useStaticQuery, graphql, navigate } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 
 const names = new Map()
 names.set('dGVybToxMDE2', 'Caregiving')
@@ -15,13 +15,16 @@ names.set('dGVybToxOA==', 'Tested Positive')
 names.set('dGVybToxOQ==', 'Advice')
 
 
-const Category = ({ category }) => {
+const Category = (category) => {
+
   return (
     <Grid item>
-      <Button onClick={() => navigate(category.uri)}>
-        {category.name}
-      </Button>
-    </Grid >
+      <ButtonBase>
+        <Typography variant="subtitle1">
+          <Link color="textPrimary" to={category.uri}>{category.name}</Link>
+        </Typography>
+      </ButtonBase>
+    </Grid>
   )
 }
 
@@ -57,7 +60,7 @@ const CategoryBar = () => {
         {categories.map((category) => {
           return (
             <>
-              <Category key={category.id} category={category} />
+              <Category key={category.id} {...category} />
             </>
           )
         })}
