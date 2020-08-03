@@ -117,21 +117,21 @@ const Relay = ({ data }) => {
             flexItem
           />
           <Grid item xs={12} container spacing={3}>
-            <IconCta to="/about">
+            <IconCta to="/how-to-help">
               <Box display="flex" flexDirection="column">
                 <Img style={{ width: '100px' }} fixed={data.donateImage.childImageSharp.fixed} />
                 <Typography variant="subtitle1">How To Donate</Typography>
               </Box>
             </IconCta>
             <Divider orientation="vertical" style={{ width: "1px" }} flexItem />
-            <IconCta to="about">
+            <IconCta to="how-to-help">
               <Box display="flex" flexDirection="column">
                 <Img style={{ width: '100px' }} fixed={data.helpImage.childImageSharp.fixed} />
                 <Typography variant="subtitle1">How To Help</Typography>
               </Box>
             </IconCta>
             <Divider orientation="vertical" style={{ width: "1px" }} flexItem />
-            <IconCta to="/about">
+            <IconCta to="/how-to-help">
               <Box display="flex" flexDirection="column">
                 <Img style={{ width: '100px' }} fixed={data.advocateImage.childImageSharp.fixed} />
                 <Typography variant="subtitle1">How To Advocate</Typography>
