@@ -4,6 +4,7 @@ import { Typography, Container } from "@material-ui/core"
 import SEO from "../components/SEO"
 import BackBar from "../components/BackBar"
 import Img from "gatsby-image"
+import Footer from "../components/Footer"
 
 const tagMap = new Map()
 tagMap.set("body", "div")
@@ -123,6 +124,7 @@ const BlogPost = ({ data }) => {
         {/* The above code works only for the Index page blogs. No idea why. */}
         {/* <div dangerouslySetInnerHTML={{ __html: wpPost.content }}></div> */}
       </Container>
+      <Footer></Footer>
     </>
   )
 }
