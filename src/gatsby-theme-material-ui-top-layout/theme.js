@@ -1,23 +1,23 @@
-import { createMuiTheme } from "@material-ui/core";
-import { typography } from './typogrophy'
+import { createMuiTheme } from "@material-ui/core"
+import { typography } from "./typography"
 
 const props = {
   MuiCard: {
-    variant: 'outlined',
+    variant: "outlined",
   },
 }
 const overrides = {}
 const primary = {
-  light: '#3298fe',
-  main: '#005bd1',
-  dark: '#005bd1',
-  contrastText: '#fff',
+  light: "#3298fe",
+  main: "#005bd1",
+  dark: "#252475",
+  contrastText: "#fff",
 }
 const secondary = {
-  light: '#ffa36e',
-  main: '#ffa36e',
-  dark: '#ffa36e',
-  contrastText: '#fff',
+  light: "#ffa36e",
+  main: "#ffa36e",
+  dark: "#ffa36e",
+  contrastText: "#fff",
 }
 const shape = {
   borderRadius: 4,
@@ -26,15 +26,15 @@ const theme = createMuiTheme({
   props,
   overrides,
   palette: {
-    type: 'light',
+    type: "light",
     primary,
     secondary,
     background: {
-      default: '#FFFFFF'
-    }
+      default: "#FFFFFF",
+    },
   },
   shape,
-  typography
-});
+  typography,
+})
 
 export default theme
