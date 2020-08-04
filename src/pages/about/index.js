@@ -15,6 +15,9 @@ import SEO from "../../components/SEO"
 import Img from "gatsby-image"
 import { graphql } from "gatsby"
 import BackBar from "../../components/BackBar"
+import Theme from "../../gatsby-theme-material-ui-top-layout/theme"
+import Footer from "../../components/Footer"
+import { makeStyles, withStyles } from "@material-ui/core/styles"
 
 const OurMission = ({ contentImage }) => {
   return (
@@ -32,7 +35,8 @@ const OurMission = ({ contentImage }) => {
           COVID-19.{" "}
         </Typography>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={6}></Grid>
+      <Grid item xs={4}>
         <Img fluid={contentImage.childImageSharp.fluid}></Img>
       </Grid>
     </>
@@ -49,7 +53,45 @@ const OurTeam = () => {
   )
 }
 
+// STYLING FOR THE TABS---------------------------------------
+const StyledTabs = withStyles(theme => ({
+  indicator: {
+    display: "flex",
+    justifyContent: "center",
+    backgroundColor: "transparent",
+    "& > span": {
+      // maxWidth: 40, //To change the width of the tab indicator highlight
+      width: "100%",
+      backgroundColor: theme.palette.primary.light,
+    },
+  },
+}))(props => <Tabs {...props} TabIndicatorProps={{ children: <span /> }} />)
+
+const StyledTab = withStyles(theme => ({
+  root: {
+    textTransform: "none",
+    color: "#fff",
+    fontWeight: theme.typography.fontWeightRegular,
+    fontSize: theme.typography.pxToRem(20),
+    marginRight: theme.spacing(1),
+    "&:focus": {
+      opacity: 1,
+    },
+  },
+}))(props => <Tab disableRipple {...props} />)
+
+const useStyles = makeStyles(theme => ({
+  styled: {
+    backgroundColor: theme.palette.primary.dark,
+  },
+  mainPage: {
+    backgroundColor: theme.palette.primary.lightGray,
+  },
+}))
+// ------------------------------------------------------------------------
+
 export const AboutPage = ({ data, location }) => {
+  const classes = useStyles()
   const [value, setValue] = useState(
     (location && location.state && location.state.page) || 0
   )
@@ -60,23 +102,32 @@ export const AboutPage = ({ data, location }) => {
   return (
     <>
       <BackBar />
-      <FeatureImage image={data.image}>
-      </FeatureImage>
-      <AppBar position="static" variant="outlined" color="transparent">
-        <Tabs value={value} onChange={handleChange}>
-          <Tab label="Our Mission" />
-          <Tab label="Our team" />
-        </Tabs>
-      </AppBar>
-      <Container fixed>
-        <Grid container>
-          {value === 0 ? (
-            <OurMission contentImage={contentImage} />
-          ) : (
+      <FeatureImage image={data.image}></FeatureImage>
+      <div className={classes.styled}>
+        <AppBar position="static" variant="outlined" color="transparent">
+          <StyledTabs
+            value={value}
+            onChange={handleChange}
+            variant="fullWidth"
+            centered
+          >
+            <StyledTab label="Our Mission" />
+            <StyledTab label="Our Team" />
+          </StyledTabs>
+        </AppBar>
+      </div>
+      <div className={classes.mainPage}>
+        <Container fixed>
+          <Grid container>
+            {value === 0 ? (
+              <OurMission contentImage={contentImage} />
+            ) : (
               <OurTeam />
             )}
-        </Grid>
-      </Container>
+          </Grid>
+        </Container>
+      </div>
+      <Footer></Footer>
     </>
   )
 }

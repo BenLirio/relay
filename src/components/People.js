@@ -1,5 +1,5 @@
-import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import {
   Card,
   CardHeader,
@@ -9,12 +9,12 @@ import {
   Avatar,
   Button,
   CardActions,
-} from '@material-ui/core'
+} from "@material-ui/core"
 
 class PersonData {
   constructor(node) {
-    this.name = node.fullname || 'rando'
-    this.team = node.team || ''
+    this.name = node.fullname || "rando"
+    this.team = node.team || ""
     this.position = node.position || null
     this.school = node.school
     this.instagram = node.instagram
@@ -73,11 +73,11 @@ const People = () => {
   )
   return (
     <>
-      People - Data from{' '}
+      People - Data from:{" "}
       <a href="https://docs.google.com/spreadsheets/d/1ZarUDaXOGxN6cedlX2mLl6lbF_uGxKMnO4OXisLpM8s/edit?usp=sharing">
         Google Sheets
-      </a>{' '}
-      Request acces to edit
+      </a>
+      . Request access to edit.
       <Grid container spacing={3}>
         {people.edges.map(({ node }) => {
           return (
