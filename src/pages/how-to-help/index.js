@@ -3,6 +3,7 @@ import { Typography, Container, Grid } from "@material-ui/core"
 import FeatureImage from "../../components/FeatureImage"
 import Img from "gatsby-image"
 import SEO from "../../components/SEO"
+import Footer from "../../components/Footer"
 import { graphql } from "gatsby"
 
 const HowToHelp = ({ data }) => {
@@ -37,6 +38,7 @@ const HowToHelp = ({ data }) => {
           </Grid>
         </Grid>
       </Container>
+      <Footer></Footer>
     </>
   )
 }

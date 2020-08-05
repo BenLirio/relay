@@ -1,11 +1,20 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Typography, Container, Grid, Divider, Button, Hidden, Box } from "@material-ui/core"
+import {
+  Typography,
+  Container,
+  Grid,
+  Divider,
+  Button,
+  Hidden,
+  Box,
+} from "@material-ui/core"
 import Posts from "../components/Posts"
 import Post from "../components/shared/Post"
 import SEO from "../components/SEO"
 import { Link } from "gatsby-theme-material-ui"
 import BackBar from "../components/BackBar"
+import Footer from "../components/Footer"
 
 const CategoryPage = ({ data }) => {
   const { wpCategory } = data
@@ -16,8 +25,7 @@ const CategoryPage = ({ data }) => {
       <Container>
         <SEO></SEO>
         <Grid container spacing={3}>
-          <Grid item xs={12}>
-          </Grid>
+          <Grid item xs={12}></Grid>
           <Grid item xs={12}>
             <Typography variant="overline">Category</Typography>
             <Typography variant="h2">{wpCategory.name}</Typography>
@@ -69,7 +77,8 @@ const CategoryPage = ({ data }) => {
             })}
           </Hidden>
         </Grid>
-      </Container >
+      </Container>
+      <Footer></Footer>
     </>
   )
 }

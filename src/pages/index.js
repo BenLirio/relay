@@ -20,8 +20,9 @@ import Img from "gatsby-image"
 import Post from "../components/shared/Post"
 import Helmet from "react-helmet"
 import SEO from "../components/SEO"
+import Footer from "../components/Footer"
 import IconCta from "../components/IconCta"
-import { Link } from 'gatsby-plugin-material-ui'
+import { Link } from "gatsby-plugin-material-ui"
 
 const Relay = ({ data }) => {
   const { allWpPost } = data
@@ -29,7 +30,7 @@ const Relay = ({ data }) => {
   const otherPosts = clonePosts.splice(4, 4)
   const firstPost = allWpPost.nodes[0]
   const goToAbout = () => {
-    navigate('/about')
+    navigate("/about")
   }
   return (
     <>
@@ -39,10 +40,14 @@ const Relay = ({ data }) => {
           <Grid style={{ marginBottom: "16px" }} container justify="center">
             <Grid item style={{ marginBottom: "24px" }}>
               <Hidden only="xs">
-                <Typography variant="h1" style={{ textAlign: 'center' }}>The Relay Resource</Typography>
+                <Typography variant="h1" style={{ textAlign: "center" }}>
+                  The Relay Resource
+                </Typography>
               </Hidden>
               <Hidden smUp>
-                <Typography variant="h2" style={{ textAlign: 'center' }}>The Relay Resource</Typography>
+                <Typography variant="h2" style={{ textAlign: "center" }}>
+                  The Relay Resource
+                </Typography>
               </Hidden>
             </Grid>
             <Grid item xs={12}></Grid>
@@ -67,11 +72,19 @@ const Relay = ({ data }) => {
                   <iframe
                     title="covid-map"
                     src="https://ourworldindata.org/grapher/total-deaths-covid-19?country=ITA+ESP+USA"
-                    style={{ width: "100%", height: "600px", border: "0px none" }}
+                    style={{
+                      width: "100%",
+                      height: "600px",
+                      border: "0px none",
+                    }}
                   ></iframe>
                 </Grid>
               </Grid>
-              <Divider orientation="vertical" style={{ width: "1px" }} flexItem />
+              <Divider
+                orientation="vertical"
+                style={{ width: "1px" }}
+                flexItem
+              />
               <Grid item xs={3} container direction="column">
                 <Grid item>
                   <Post post={allWpPost.nodes[1]} />
@@ -119,21 +132,30 @@ const Relay = ({ data }) => {
           <Grid item xs={12} container spacing={3}>
             <IconCta to="/about">
               <Box display="flex" flexDirection="column">
-                <Img style={{ width: '100px' }} fixed={data.donateImage.childImageSharp.fixed} />
+                <Img
+                  style={{ width: "100px" }}
+                  fixed={data.donateImage.childImageSharp.fixed}
+                />
                 <Typography variant="subtitle1">How To Donate</Typography>
               </Box>
             </IconCta>
             <Divider orientation="vertical" style={{ width: "1px" }} flexItem />
             <IconCta to="about">
               <Box display="flex" flexDirection="column">
-                <Img style={{ width: '100px' }} fixed={data.helpImage.childImageSharp.fixed} />
+                <Img
+                  style={{ width: "100px" }}
+                  fixed={data.helpImage.childImageSharp.fixed}
+                />
                 <Typography variant="subtitle1">How To Help</Typography>
               </Box>
             </IconCta>
             <Divider orientation="vertical" style={{ width: "1px" }} flexItem />
             <IconCta to="/about">
               <Box display="flex" flexDirection="column">
-                <Img style={{ width: '100px' }} fixed={data.advocateImage.childImageSharp.fixed} />
+                <Img
+                  style={{ width: "100px" }}
+                  fixed={data.advocateImage.childImageSharp.fixed}
+                />
                 <Typography variant="subtitle1">How To Advocate</Typography>
               </Box>
             </IconCta>
@@ -152,16 +174,32 @@ const Relay = ({ data }) => {
               <Grid item xs={8} container spacing={3}>
                 <Post post={allWpPost.nodes[3]} />
               </Grid>
-              <Divider orientation="vertical" style={{ width: "1px", margin: '4px' }} flexItem />
-              <Grid item xs container spacing={3} direction="column" alignContent="center" alignItems="center">
+              <Divider
+                orientation="vertical"
+                style={{ width: "1px", margin: "4px" }}
+                flexItem
+              />
+              <Grid
+                item
+                xs
+                container
+                spacing={3}
+                direction="column"
+                alignContent="center"
+                alignItems="center"
+              >
                 <Grid item xs>
                   <Typography variant="h5">Made by students</Typography>
                 </Grid>
                 <Grid item xs>
-                  <Button onClick={goToAbout} variant="outlined">Meet The Team</Button>
+                  <Button onClick={goToAbout} variant="outlined">
+                    Meet The Team
+                  </Button>
                 </Grid>
                 <Grid item xs>
-                  <Button onClick={goToAbout} variant="outlined">Our Mission</Button>
+                  <Button onClick={goToAbout} variant="outlined">
+                    Our Mission
+                  </Button>
                 </Grid>
               </Grid>
             </Grid>
@@ -195,6 +233,7 @@ const Relay = ({ data }) => {
           </Grid>
         </Grid>
       </Container>
+      <Footer></Footer>
     </>
   )
 }

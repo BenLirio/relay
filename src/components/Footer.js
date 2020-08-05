@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import {
   Box,
   Container,
@@ -9,8 +9,9 @@ import {
   createMuiTheme,
   Button,
   makeStyles,
-} from '@material-ui/core'
-import { Link } from 'gatsby'
+  withStyles,
+} from "@material-ui/core"
+import { Link } from "gatsby"
 
 const FooterSection = ({ children }) => {
   return (
@@ -22,11 +23,24 @@ const FooterSection = ({ children }) => {
   )
 }
 
+//Custom 'ColorButton' for the footer-------------------
+const ColorButton = withStyles(theme => ({
+  root: {
+    color: theme.palette.primary.contrastText,
+    backgroundColor: "transparent",
+    "&:hover": {
+      color: theme.palette.primary.light,
+    },
+  },
+}))(Button)
+//------------------------------------------------------
+
 const useStyles = makeStyles(theme => {
   return {
     footer: {
       paddingTop: theme.spacing(4),
       paddingBottom: theme.spacing(4),
+      backgroundColor: theme.palette.primary.darkGray, //Footer background color
     },
   }
 })
@@ -36,14 +50,14 @@ const Footer = () => {
   const themeDark = createMuiTheme({
     ...theme,
     palette: {
-      type: 'dark',
+      type: "dark",
     },
   })
   const classes = useStyles()
 
   return (
     <ThemeProvider theme={themeDark}>
-      <Box bgcolor="background.paper" className={classes.footer}>
+      <Box className={classes.footer}>
         <Container fixed>
           <Grid container>
             <FooterSection>
@@ -53,14 +67,14 @@ const Footer = () => {
                 </Typography>
               </Grid>
               <Grid item>
-                <Button component={Link} to="/about" state={{ page: 0 }}>
+                <ColorButton component={Link} to="/about" state={{ page: 0 }}>
                   Our Mission
-                </Button>
+                </ColorButton>
               </Grid>
               <Grid item>
-                <Button component={Link} to="/about" state={{ page: 1 }}>
+                <ColorButton component={Link} to="/about" state={{ page: 1 }}>
                   Our Team
-                </Button>
+                </ColorButton>
               </Grid>
             </FooterSection>
             <FooterSection>
@@ -77,13 +91,19 @@ const Footer = () => {
                 </Typography>
               </Grid>
               <Grid item>
-                <Button>How To Donate</Button>
+                <ColorButton component={Link} to="/how-to-help">
+                  How To Donate
+                </ColorButton>
               </Grid>
               <Grid item>
-                <Button>How To Volunteer</Button>
+                <ColorButton component={Link} to="/how-to-help">
+                  How To Volunteer
+                </ColorButton>
               </Grid>
               <Grid item>
-                <Button>How To Advocate</Button>
+                <ColorButton component={Link} to="/how-to-help">
+                  How To Advocate
+                </ColorButton>
               </Grid>
             </FooterSection>
           </Grid>
