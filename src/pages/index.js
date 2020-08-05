@@ -130,7 +130,7 @@ const Relay = ({ data }) => {
             flexItem
           />
           <Grid item xs={12} container spacing={3}>
-            <IconCta to="/how-to-help">
+            <IconCta to="/about">
               <Box display="flex" flexDirection="column">
                 <Img
                   style={{ width: "100px" }}
@@ -140,7 +140,7 @@ const Relay = ({ data }) => {
               </Box>
             </IconCta>
             <Divider orientation="vertical" style={{ width: "1px" }} flexItem />
-            <IconCta to="how-to-help">
+            <IconCta to="about">
               <Box display="flex" flexDirection="column">
                 <Img
                   style={{ width: "100px" }}
@@ -150,7 +150,7 @@ const Relay = ({ data }) => {
               </Box>
             </IconCta>
             <Divider orientation="vertical" style={{ width: "1px" }} flexItem />
-            <IconCta to="/how-to-help">
+            <IconCta to="/about">
               <Box display="flex" flexDirection="column">
                 <Img
                   style={{ width: "100px" }}
