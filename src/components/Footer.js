@@ -10,7 +10,15 @@ import {
   Button,
   makeStyles,
   withStyles,
+  IconButton,
+  SvgIcon,
 } from "@material-ui/core"
+import TwitterIcon from "@material-ui/icons/Twitter"
+import FacebookIcon from "@material-ui/icons/Facebook"
+import InstagramIcon from "@material-ui/icons/Instagram"
+import YouTubeIcon from "@material-ui/icons/YouTube"
+import LinkedInIcon from "@material-ui/icons/LinkedIn"
+import Theme from "../gatsby-theme-material-ui-top-layout/theme"
 import { Link } from "gatsby"
 
 const FooterSection = ({ children }) => {
@@ -82,6 +90,66 @@ const Footer = () => {
                 <Typography variant="h4" color="textPrimary">
                   Contact Us
                 </Typography>
+              </Grid>
+              <Grid item>
+                {/* This 'onClick' function opens the link in a new Tab. Taken from https://stackoverflow.com/questions/45046030/maintaining-href-open-in-new-tab-with-an-onclick-handler-in-react */}
+                <IconButton
+                  onClick={() =>
+                    window.open(
+                      "https://www.facebook.com/therelayresource/",
+                      "_blank"
+                    )
+                  }
+                  rel="noopener noreferrer"
+                  aria-label="Follow on Facebook"
+                >
+                  <FacebookIcon></FacebookIcon>
+                </IconButton>
+                <IconButton
+                  onClick={() =>
+                    window.open("https://twitter.com/relayresource", "_blank")
+                  }
+                  rel="noopener noreferrer"
+                  aria-label="Follow on Twitter"
+                >
+                  <TwitterIcon></TwitterIcon>
+                </IconButton>
+                <IconButton
+                  onClick={() =>
+                    window.open(
+                      "https://www.instagram.com/therelayresource/",
+                      "_blank"
+                    )
+                  }
+                  rel="noopener noreferrer"
+                  aria-label="Follow on Instagram"
+                >
+                  <InstagramIcon></InstagramIcon>
+                </IconButton>
+                <IconButton
+                  onClick={() =>
+                    window.open(
+                      "https://www.youtube.com/channel/UCj2DsuEKQgXU5aydu6WI4QQ",
+                      "_blank"
+                    )
+                  }
+                  rel="noopener noreferrer"
+                  aria-label="Follow on YouTube"
+                >
+                  <YouTubeIcon></YouTubeIcon>
+                </IconButton>
+                <IconButton
+                  onClick={() =>
+                    window.open(
+                      "https://www.linkedin.com/company/relay-resource/",
+                      "_blank"
+                    )
+                  }
+                  rel="noopener noreferrer"
+                  aria-label="Follow on LinkedIn"
+                >
+                  <LinkedInIcon></LinkedInIcon>
+                </IconButton>
               </Grid>
             </FooterSection>
             <FooterSection>
